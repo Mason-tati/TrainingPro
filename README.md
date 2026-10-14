@@ -104,7 +104,8 @@ database/
   db.js               #   DB access + auto-init from schema
   schema.sql          #   Full database schema (data files are NOT committed)
 uploads/              # Uploaded source documents (git-ignored at runtime)
-docs/ARCHITECTURE.md  # Architecture & design notes
+docs/ARCHITECTURE.md       # Architecture & design notes
+docs/AUDIT-GOVERNANCE.md   # Audit-governance migration & engineering changelog
 tests/                # Automated test suite (unit / api / db / docgen …)
 ```
 
