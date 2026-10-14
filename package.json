@@ -1,0 +1,50 @@
+{
+  "name": "traintrack-web",
+  "version": "1.0.0",
+  "description": "TrainTrack - Employee Training Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --max-old-space-size=4096 server.js",
+    "start:5050": "node --max-old-space-size=4096 start-5050.js",
+    "dev": "nodemon server.js",
+    "test": "node --require ./tests/helpers/network-guard.js --test \"tests/**/*.test.js\"",
+    "test:unit": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/**/*.test.js\"",
+    "test:db": "node --require ./tests/helpers/network-guard.js --test \"tests/db/**/*.test.js\"",
+    "test:api": "node --require ./tests/helpers/network-guard.js --test \"tests/api/**/*.test.js\"",
+    "test:docgen": "node --require ./tests/helpers/network-guard.js --test \"tests/docgen/**/*.test.js\"",
+    "test:logging": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/log*.test.js\" \"tests/unit/logger*.test.js\" \"tests/unit/request-context.test.js\" \"tests/api/request-correlation.test.js\" \"tests/api/request-logging.test.js\" \"tests/api/error-logging.test.js\" \"tests/api/auth-security-logging.test.js\"",
+    "test:monitoring": "node --require ./tests/helpers/network-guard.js --test \"tests/api/monitoring.test.js\"",
+    "test:ai": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/ai-gateway.test.js\" \"tests/unit/content-ai.test.js\" \"tests/unit/translate.test.js\" \"tests/unit/ai-boundary-guard.test.js\" \"tests/docgen/translate-roundtrip.test.js\" \"tests/api/ai-routes-batch1.test.js\" \"tests/api/ai-routes-batch2.test.js\"",
+    "test:policy": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/ai-policy.test.js\" \"tests/unit/ai-gateway.test.js\"",
+    "test:security": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/security-config.test.js\" \"tests/unit/security-session.test.js\" \"tests/api/security-rate-limit.test.js\" \"tests/unit/password-policy.test.js\" \"tests/api/security-default-admin.test.js\" \"tests/api/security-headers.test.js\" \"tests/unit/security-validate.test.js\" \"tests/unit/security-upload.test.js\" \"tests/api/security-logging.test.js\" \"tests/api/security-sweep.test.js\"",
+    "test:authz": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/auth-permissions.test.js\" \"tests/unit/auth-roles.test.js\" \"tests/unit/access-control.test.js\" \"tests/unit/user-permissions.test.js\" \"tests/unit/authorize.test.js\" \"tests/unit/route-permissions.test.js\" \"tests/api/session-permissions.test.js\" \"tests/api/authorization-report.test.js\" \"tests/api/route-permission-report.test.js\" \"tests/api/authorization-audit.test.js\" \"tests/api/rbac-sweep.test.js\"",
+    "test:governance": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/governance-classifications.test.js\" \"tests/unit/governance-retention.test.js\" \"tests/unit/governance-sensitive-data.test.js\" \"tests/unit/governance-entities.test.js\" \"tests/unit/governance-actions.test.js\" \"tests/unit/governance-audit.test.js\" \"tests/api/governance-audit.test.js\" \"tests/unit/governance-taxonomy.test.js\" \"tests/unit/governance-entity-map.test.js\" \"tests/api/governance-sweep.test.js\"",
+    "test:policy-context": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/operation-policy.test.js\" \"tests/unit/ai-policy.test.js\" \"tests/unit/ai-gateway.test.js\"",
+    "test:regression": "node --require ./tests/helpers/network-guard.js --test \"tests/regression/**/*.test.js\"",
+    "test:perf": "node --require ./tests/helpers/network-guard.js --test \"tests/performance/**/*.test.js\"",
+    "test:coverage": "node --require ./tests/helpers/network-guard.js --test --experimental-test-coverage \"tests/**/*.test.js\"",
+    "test:audit": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/audit-inventory.test.js\" \"tests/unit/audit-adapter.test.js\" \"tests/api/audit-adapter.test.js\" \"tests/api/audit-migration-m3.test.js\" \"tests/api/audit-migration-m4.test.js\" \"tests/api/audit-migration-m5.test.js\" \"tests/api/audit-retirement.test.js\"",
+    "test:document": "node --require ./tests/helpers/network-guard.js --test \"tests/unit/document-*.test.js\" \"tests/unit/approval-levels.test.js\" \"tests/unit/review-frequency.test.js\""
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.102.0",
+    "@pdf-lib/fontkit": "^1.1.1",
+    "adm-zip": "^0.5.17",
+    "bcryptjs": "^2.4.3",
+    "chart.js": "^4.4.1",
+    "connect-sqlite3": "^0.9.16",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.10",
+    "openai": "^6.48.0",
+    "pdf-lib": "^1.17.1",
+    "pptxgenjs": "^4.0.1",
+    "sharp": "^0.35.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "pdf-parse": "^2.4.5"
+  }
+}

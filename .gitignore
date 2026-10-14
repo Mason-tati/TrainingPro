@@ -1,0 +1,33 @@
+# ── Dependencies ──────────────────────────────────────────────
+node_modules/
+
+# ── Database — contains API keys and runtime data (NEVER commit) ──
+# Keep code (db.js) and schema (schema.sql); exclude the data files.
+database/*.db
+database/*.db-wal
+database/*.db-shm
+database/*.sqlite
+database/sessions.db
+
+# ── Uploaded documents (user data — large and possibly sensitive) ──
+uploads/*
+!uploads/.gitkeep
+
+# ── Secrets / local config ─────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+secrets*.json
+
+# ── Logs & temp ────────────────────────────────────────────────
+*.log
+*.tmp
+tmp/
+.DS_Store
+Thumbs.db
+
+# ── Temporary testing artefacts (WP-07 automated testing foundation) ──
+tests/.tmp/
+coverage/
+*.lcov

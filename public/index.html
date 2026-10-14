@@ -1,0 +1,3108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrainingPro - Training Management System</title>
+  <link rel="stylesheet" href="/css/style.css?v=167">
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="login-page">
+  <div class="login-card">
+    <div class="logo">
+      <img src="/img/trainingpro-logo.svg?v=58" alt="TrainingPro" class="login-logo">
+      <h1>Training<span>Pro</span></h1>
+      <p>Employee Training Management System</p>
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter username" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password">
+    </div>
+    <button class="btn-login" onclick="doLogin()">Sign In</button>
+    <div class="login-error hidden" id="login-error"></div>
+    <div class="login-hint">Default login: <strong>admin</strong> / <strong>admin123</strong></div>
+    <div class="login-credit">Built by <strong>Mason Blum</strong></div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="hidden">
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="sidebar-brand">
+      <img src="/img/trainingpro-logo.svg?v=58" alt="TrainingPro" class="brand-logo">
+      <div>
+        <h2>Training<span>Pro</span></h2>
+        <small>Training Management</small>
+      </div>
+    </div>
+    <nav>
+      <a href="#" class="nav-link active" data-page="dashboard"><span class="icon">📊</span> Dashboard</a>
+      <a href="#" class="nav-link" data-page="my-training"><span class="icon">🙋</span> My Training</a>
+      <div class="nav-section staff-feature">Records</div>
+      <a href="#" class="nav-link" data-page="employees"><span class="icon">👥</span> Employees</a>
+      <a href="#" class="nav-link" data-page="training"><span class="icon">🎓</span> Training Courses</a>
+      <a href="#" class="nav-link" data-page="classes"><span class="icon">📅</span> Classes</a>
+      <a href="#" class="nav-link" data-page="calendar"><span class="icon">🗓️</span> Calendar</a>
+      <a href="#" class="nav-link" data-page="trainers"><span class="icon">👨‍🏫</span> Trainers</a>
+      <a href="#" class="nav-link" data-page="roster"><span class="icon">🗂️</span> Shift Roster</a>
+      <a href="#" class="nav-link admin-only" data-page="onboarding"><span class="icon">🧑‍💼</span> Employee Onboarding</a>
+      <a href="#" class="nav-link admin-only" data-page="disciplinary"><span class="icon">⚖️</span> HR Disciplinary Action</a>
+      <a href="#" class="nav-link admin-only" data-page="hr-forms"><span class="icon">📋</span> HR Form Builder</a>
+      <a href="#" class="nav-link admin-only" data-page="attendance"><span class="icon">✅</span> Attendance</a>
+      <a href="#" class="nav-link admin-only" data-page="leave-types"><span class="icon">🏖️</span> Leave Types</a>
+      <a href="#" class="nav-link admin-only" data-page="equipment"><span class="icon">🚜</span> Equipment</a>
+      <a href="#" class="nav-link admin-only" data-page="assignment"><span class="icon">👷</span> Employee Assignment</a>
+      <a href="#" class="nav-link" data-page="records"><span class="icon">📋</span> Training Records</a>
+      <a href="#" class="nav-link" data-page="requirements"><span class="icon">✅</span> Requirements</a>
+      <a href="#" class="nav-link" data-page="exams"><span class="icon">📝</span> Online Exams</a>
+      <a href="#" class="nav-link admin-only" data-page="exam-builder"><span class="icon">🔨</span> Exam Builder</a>
+      <a href="#" class="nav-link" data-page="field-assess"><span class="icon">📋</span> Field Assessment</a>
+      <a href="#" class="nav-link admin-only" data-page="forms"><span class="icon">🧰</span> Form Builder</a>
+      <div class="nav-section">Data</div>
+      <a href="#" class="nav-link" data-page="documents"><span class="icon">📎</span> Document Library</a>
+      <a href="#" class="nav-link" data-page="training-standards"><span class="icon">📐</span> Training Standards</a>
+      <a href="#" class="nav-link" data-page="training-material"><span class="icon">🗂️</span> Training Material</a>
+      <a href="#" class="nav-link admin-only" data-page="training-covers"><span class="icon">🖼️</span> Training Material Covers</a>
+      <a href="#" class="nav-link" data-page="translator"><span class="icon">🌐</span> AI Translator</a>
+      <a href="#" class="nav-link admin-only" data-page="content-studio"><span class="icon">🤖</span> AI Content Studio</a>
+      <a href="#" class="nav-link" data-page="template-forms"><span class="icon">📋</span> Template Forms</a>
+      <a href="#" class="nav-link" data-page="powerpoints"><span class="icon">🎞️</span> Training PowerPoint Developer</a>
+      <a href="#" class="nav-link" data-page="import"><span class="icon">📤</span> Import / Export</a>
+      <div class="nav-section">Knowledge</div>
+      <a href="#" class="nav-link" data-page="knowledge-base"><span class="icon">📚</span> Knowledge Base</a>
+      <a href="#" class="nav-link" data-page="competency"><span class="icon">📊</span> Competency Management</a>
+      <a href="#" class="nav-link admin-only" data-page="competency-builder"><span class="icon">🏗️</span> Competency Builder</a>
+      <a href="#" class="nav-link admin-only" data-page="competency-certificates"><span class="icon">🎖️</span> Competency Certificates</a>
+      <div class="nav-section">Insights</div>
+      <a href="#" class="nav-link" data-page="analytics"><span class="icon">📈</span> Analytics</a>
+      <a href="#" class="nav-link" data-page="matrix"><span class="icon">🔲</span> Training Matrix</a>
+      <a href="#" class="nav-link" data-page="notifications"><span class="icon">🔔</span> Reminders <span id="nav-notif-badge" class="nav-badge hidden">0</span></a>
+      <div class="nav-section">Reports</div>
+      <a href="#" class="nav-link" data-page="rpt-expiring"><span class="icon">⚠️</span> Expiring Soon</a>
+      <a href="#" class="nav-link" data-page="rpt-expired"><span class="icon">🔴</span> Expired</a>
+      <a href="#" class="nav-link" data-page="rpt-missing"><span class="icon">❌</span> Missing Training</a>
+      <a href="#" class="nav-link" data-page="rpt-history"><span class="icon">📈</span> Training History</a>
+      <a href="#" class="nav-link" data-page="rpt-compliance"><span class="icon">📑</span> Compliance</a>
+      <a href="#" class="nav-link" data-page="rpt-workforce"><span class="icon">🧑‍🤝‍🧑</span> Workforce / Gender</a>
+      <div class="nav-section admin-only">Admin</div>
+      <a href="#" class="nav-link admin-only" data-page="admin-lookup"><span class="icon">⚙️</span> Setup Lists</a>
+      <a href="#" class="nav-link admin-only" data-page="admin-users"><span class="icon">🔑</span> User Accounts</a>
+      <a href="#" class="nav-link admin-only" data-page="admin-email"><span class="icon">✉️</span> Email Settings</a>
+      <a href="#" class="nav-link admin-only" data-page="workflows"><span class="icon">🔀</span> Workflow Assignment</a>
+      <a href="#" class="nav-link admin-only" data-page="admin-audit"><span class="icon">🛡️</span> Audit Trail</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="info">
+        <div class="avatar" id="sidebar-avatar">A</div>
+        <div>
+          <strong id="sidebar-username"></strong>
+          <span id="sidebar-role"></span>
+        </div>
+      </div>
+      <button onclick="doLogout()">Sign Out</button>
+      <div class="sidebar-credit">Built by Mason Blum</div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div id="main">
+    <div id="topbar">
+      <div class="flex items-center gap-2">
+        <button id="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+        <div>
+          <div class="crumb">TrainingPro</div>
+          <h2 id="page-title">Dashboard</h2>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div id="tenant-switch" class="tenant-switch" style="display:none">
+          <span class="tenant-ic">🏢</span>
+          <select id="tenant-select" onchange="tenantSwitch(this.value)" title="Active organisation"></select>
+          <button id="tenant-manage" class="btn btn-ghost btn-sm" onclick="openTenantManager()" title="Manage organisations" style="display:none">⚙</button>
+        </div>
+        <button class="bell-btn" onclick="navigateTo('notifications')" title="Reminders">
+          🔔<span id="bell-badge" class="bell-badge hidden">0</span>
+        </button>
+        <span id="topbar-date" class="text-muted"></span>
+      </div>
+    </div>
+    <div id="content">
+
+      <!-- DASHBOARD -->
+      <div class="page active" id="page-dashboard">
+        <div class="stats-grid" id="dash-stats"></div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header"><h3>📊 Training Status Overview</h3></div>
+            <div class="card-body"><div class="chart-box"><canvas id="chart-status"></canvas></div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>🍩 Compliance Snapshot</h3></div>
+            <div class="card-body"><div class="chart-box"><canvas id="chart-compliance"></canvas></div></div>
+          </div>
+        </div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header"><h3>⚠️ Expiring in 60 Days</h3>
+              <button class="btn btn-ghost btn-sm" onclick="navigateTo('rpt-expiring')">View all →</button></div>
+            <div class="card-body" id="dash-expiring"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>✅ Recent Completions</h3>
+              <button class="btn btn-ghost btn-sm" onclick="navigateTo('records')">View all →</button></div>
+            <div class="card-body" id="dash-recent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMPLOYEES -->
+      <div class="page" id="page-employees">
+        <div class="card">
+          <div class="card-header">
+            <h3>Employee List</h3>
+            <button class="btn btn-accent" onclick="openStaffModal()">+ Add Employee</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <input class="search-box" id="staff-search" placeholder="Search name or file #..." oninput="loadStaff()">
+              <select id="staff-status" onchange="loadStaff()">
+                <option value="">All Status</option>
+                <option value="Active" selected>Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Terminated">Terminated</option>
+              </select>
+              <select id="staff-dept" onchange="loadStaff()"><option value="">All Departments</option></select>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Name</th><th>File #</th><th>Department</th><th>Job Title</th><th>Status</th><th>Start Date</th><th>Email</th><th>Actions</th></tr></thead>
+                <tbody id="staff-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAINING COURSES -->
+      <div class="page" id="page-training">
+        <div class="card">
+          <div class="card-header">
+            <h3>Training Courses / Certifications</h3>
+            <button class="btn btn-accent" onclick="openCertModal()">+ Add Course</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <input class="search-box" id="cert-search" placeholder="Search..." oninput="loadCerts()">
+              <select id="cert-status" onchange="loadCerts()">
+                <option value="">All Status</option>
+                <option value="Active" selected>Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+              <select id="cert-type" onchange="loadCerts()"><option value="">All Types</option></select>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Course Name</th><th>Course #</th><th>Type</th><th>Hours</th><th>Expiry</th><th>Exam</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="cert-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLASSES -->
+      <div class="page" id="page-classes">
+        <div class="card">
+          <div class="card-header">
+            <h3>Scheduled Classes</h3>
+            <button class="btn btn-accent" onclick="openClassModal()">+ Schedule Class</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <input class="search-box" id="class-search" placeholder="Search..." oninput="loadClasses()">
+              <select id="class-upcoming" onchange="loadClasses()">
+                <option value="">All Classes</option>
+                <option value="1">Upcoming Only</option>
+              </select>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Class Name</th><th>Course</th><th>Date</th><th>Time</th><th>Location</th><th>Instructor</th><th>Enrolled</th><th>Actions</th></tr></thead>
+                <tbody id="class-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAINERS -->
+      <div class="page" id="page-trainers">
+        <div class="card">
+          <div class="card-header">
+            <h3>👨‍🏫 Trainers / Instructors</h3>
+            <button class="btn btn-accent" onclick="openTrainerModal()">+ Add Trainer</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <input class="search-box" id="trainer-search" placeholder="Search trainers..." oninput="loadTrainers()">
+              <select id="trainer-status" onchange="loadTrainers()"><option value="">All</option><option value="Active" selected>Active</option><option value="Inactive">Inactive</option></select>
+              <select id="trainer-cert" onchange="loadTrainers()"><option value="">Qualified in any course</option></select>
+            </div>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Name</th><th>Type</th><th>Company</th><th>Qualified Courses</th><th>Rate</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="trainers-tbody"></tbody></table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDAR -->
+      <div class="page" id="page-calendar">
+        <div class="card">
+          <div class="card-header">
+            <div class="flex items-center gap-2">
+              <button class="btn btn-outline btn-sm" onclick="calMove(-1)">‹ Prev</button>
+              <h3 id="cal-title" style="min-width:180px;text-align:center">Calendar</h3>
+              <button class="btn btn-outline btn-sm" onclick="calMove(1)">Next ›</button>
+              <button class="btn btn-ghost btn-sm" onclick="calMove(0)">Today</button>
+            </div>
+            <button class="btn btn-accent btn-sm" onclick="openClassModal()">+ Schedule Class</button>
+          </div>
+          <div class="card-body"><div id="calendar-grid"></div></div>
+        </div>
+      </div>
+
+      <!-- FORM BUILDER -->
+      <div class="page" id="page-forms">
+        <div class="card">
+          <div class="card-header">
+            <div class="flex items-center gap-2">
+              <h3 id="fb-page-title">🧰 Assessment Form Builder</h3>
+              <select id="fb-mode" onchange="fbSwitchMode(this.value)" style="min-width:240px;margin-left:8px">
+                <option value="assess">📋 Field Assessment Forms</option>
+                <option value="templates">📋 Template Forms</option>
+              </select>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-accent" id="fb-new-btn" onclick="openFormBuilder()">+ New Form</button>
+              <button class="btn btn-primary admin-only" id="fb-from-master-btn" onclick="document.getElementById('fb-master-file').click()" title="Upload a document — AI generates a new form using the MPR0003 master TAR layout">🤖 Generate from Document (MPR0003 layout)</button>
+              <input type="file" id="fb-master-file" class="hidden" accept=".docx,.pdf,.pptx,.txt,.png,.jpg,.jpeg,.webp,.gif" onchange="fbFromMasterRun(this)">
+              <button class="btn btn-primary admin-only hidden" id="fb-upload-btn" onclick="document.getElementById('fb-tf-upload').click()">⬆ Upload Template</button>
+              <input type="file" id="fb-tf-upload" class="hidden" accept=".docx,.pdf,.xlsx,.xls,.csv,.doc" onchange="uploadTemplateForm(this);loadTemplateForms()">
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Mode: Field Assessment Forms (default) -->
+            <div id="fb-mode-assess">
+              <div class="table-responsive"><table>
+                <thead><tr><th>Form Name</th><th>Awards Qualification</th><th>Fields</th><th>Completed</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="forms-tbody"></tbody></table></div>
+            </div>
+            <!-- Mode: Template Forms — same library as the main menu page, embedded here for convenience -->
+            <div id="fb-mode-templates" class="hidden">
+              <div class="alert alert-info" style="margin-bottom:12px"><span>ℹ️</span><div>Reusable blank forms (DOCX, PDF, XLSX, CSV) — download to fill in offline. Admins can upload new templates here.</div></div>
+              <div class="flex gap-2 mb-2 flex-wrap">
+                <input class="tf-search" placeholder="🔍 Search templates by name or category" oninput="filterTemplateForms()" style="flex:1;min-width:240px">
+                <select class="tf-cat-filter" onchange="filterTemplateForms()"><option value="">All categories</option></select>
+              </div>
+              <div class="table-responsive"><table>
+                <thead><tr><th>Template Name</th><th>Category</th><th>Type</th><th>Size</th><th>Uploaded</th><th></th></tr></thead>
+                <tbody class="tf-tbody"><tr><td colspan="6" class="empty-state">Loading template forms…</td></tr></tbody>
+              </table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIELD ASSESSMENT -->
+      <div class="page" id="page-field-assess">
+        <div id="fa-picker" class="card">
+          <div class="card-header"><h3>📋 Field Assessment</h3></div>
+          <div class="card-body">
+            <p class="text-muted mb-2">Choose an assessment to conduct in the field. Works on a tablet — fill it out, then trainee and trainer sign.</p>
+            <div id="fa-template-list"></div>
+          </div>
+        </div>
+        <div id="fa-form" class="hidden"></div>
+      </div>
+
+      <!-- SHIFT ROSTER -->
+      <div class="page" id="page-roster">
+        <div class="card">
+          <div class="card-header">
+            <div class="flex items-center gap-2">
+              <div class="view-toggle">
+                <button id="rv-day" class="vt-btn active" onclick="setRosterView('day')">Day</button>
+                <button id="rv-month" class="vt-btn" onclick="setRosterView('month')">Month</button>
+                <button id="rv-year" class="vt-btn" onclick="setRosterView('year')">Year</button>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="rosterMove(-1)">‹</button>
+              <h3 id="roster-period" style="min-width:200px;text-align:center">—</h3>
+              <button class="btn btn-outline btn-sm" onclick="rosterMove(1)">›</button>
+              <button class="btn btn-ghost btn-sm" onclick="rosterMove(0)">Today</button>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-outline btn-sm" onclick="openShiftTypesModal()">🎨 Shift Types</button>
+              <button class="btn btn-outline btn-sm" onclick="openPatternsModal()">⚙ Shift Patterns</button>
+              <button class="btn btn-outline btn-sm" onclick="openAssignModal()">📅 Assign Pattern</button>
+              <button class="btn btn-accent btn-sm" onclick="openRosterEntryModal()">+ Add Shift</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <select id="roster-persontype" onchange="loadRoster()">
+                <option value="">Everyone</option>
+                <option value="employee">Employees only</option>
+                <option value="trainer">Trainers only</option>
+              </select>
+              <select id="roster-shiftfilter" onchange="loadRoster()">
+                <option value="">All Shifts</option>
+              </select>
+              <span id="roster-legend" class="roster-legend"></span>
+            </div>
+            <div id="roster-view"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMPLOYEE FULL REPORT -->
+      <div class="page" id="page-emp-report">
+        <div id="report-container">
+          <div class="empty-state"><div class="icon">📊</div><p>Select an employee to view their full report.</p></div>
+        </div>
+      </div>
+
+      <!-- EMPLOYEE ASSIGNMENT -->
+      <div class="page" id="page-assignment">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>👷 Employee Assignment</h3>
+            <span class="cell-sub" style="align-self:center">Assign rostered employees to equipment or generic duties (job title / location / department / task)</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>Shows everyone on the roster for the selected day. Pick an employee to assign them to a piece of <strong>equipment</strong> (from the Equipment catalog) or to a generic <strong>duty</strong> (job title, location, department, plus a free-text task). Employees on approved leave are auto-flagged and skipped.</div>
+            </div>
+            <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+              <label style="font-weight:600">Date</label>
+              <input type="date" id="asg-date" onchange="loadAssignment()" style="max-width:180px">
+              <button class="btn btn-ghost btn-sm" onclick="asgShift(-1)" title="Previous day">◀</button>
+              <button class="btn btn-ghost btn-sm" onclick="asgShift(1)" title="Next day">▶</button>
+              <button class="btn btn-ghost btn-sm" onclick="asgShift(0)" title="Today">📅 Today</button>
+              <span style="flex:1"></span>
+              <input id="asg-search" placeholder="🔍 Search employee" oninput="asgRenderRows()" style="max-width:240px">
+            </div>
+            <div id="asg-summary" class="flex gap-2 mb-2 flex-wrap"></div>
+            <div id="asg-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading…</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE EQUIPMENT -->
+      <div class="page" id="page-equipment">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>🚜 Mobile Equipment</h3>
+            <span class="cell-sub" style="align-self:center">Equipment types · Units · Scheduled services · Breakdowns</span>
+          </div>
+          <div class="card-body">
+            <div id="eq-stats" class="flex gap-2 mb-2 flex-wrap"></div>
+            <div class="eq-tabs flex gap-2 mb-2">
+              <button class="btn btn-primary" id="eq-tab-units-btn" onclick="eqSetTab('units')">🚜 Units</button>
+              <button class="btn btn-ghost"   id="eq-tab-services-btn" onclick="eqSetTab('services')">🔧 Scheduled Services</button>
+              <button class="btn btn-ghost"   id="eq-tab-breakdowns-btn" onclick="eqSetTab('breakdowns')">⚠️ Breakdowns</button>
+              <button class="btn btn-ghost"   id="eq-tab-types-btn" onclick="eqSetTab('types')">⚙️ Equipment Types</button>
+            </div>
+
+            <div id="eq-tab-units">
+              <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+                <input id="eq-u-search" placeholder="🔍 Search asset / serial / location" oninput="eqRenderUnits()" style="flex:1;min-width:240px">
+                <select id="eq-u-status-filter" onchange="eqRenderUnits()">
+                  <option value="">All statuses</option>
+                  <option value="Active">Active</option>
+                  <option value="Under Repair">Under Repair</option>
+                  <option value="Decommissioned">Decommissioned</option>
+                </select>
+                <select id="eq-u-type-filter" onchange="eqRenderUnits()"><option value="">All types</option></select>
+                <button class="btn btn-accent admin-only" onclick="eqOpenNewUnit()">➕ New Unit</button>
+              </div>
+              <div id="eq-units-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading equipment…</p></div></div>
+            </div>
+
+            <div id="eq-tab-services" style="display:none">
+              <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+                <select id="eq-s-status-filter" onchange="eqRenderServices()">
+                  <option value="">All statuses</option>
+                  <option value="Scheduled">Scheduled</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Overdue">Overdue</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+                <label style="display:flex;align-items:center;gap:6px;font-size:13px"><input type="checkbox" id="eq-s-overdue-only" onchange="eqRenderServices()"> Overdue only</label>
+                <span style="flex:1"></span>
+                <button class="btn btn-accent admin-only" onclick="eqOpenNewService()">➕ Schedule Service</button>
+              </div>
+              <div id="eq-services-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading services…</p></div></div>
+            </div>
+
+            <div id="eq-tab-breakdowns" style="display:none">
+              <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+                <select id="eq-b-status-filter" onchange="eqRenderBreakdowns()">
+                  <option value="">All statuses</option>
+                  <option value="Open">Open</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Resolved">Resolved</option>
+                </select>
+                <select id="eq-b-severity-filter" onchange="eqRenderBreakdowns()">
+                  <option value="">All severities</option>
+                  <option value="Critical">Critical</option>
+                  <option value="Major">Major</option>
+                  <option value="Minor">Minor</option>
+                </select>
+                <span style="flex:1"></span>
+                <button class="btn btn-danger admin-only" onclick="eqOpenNewBreakdown()">➕ Report Breakdown</button>
+              </div>
+              <div id="eq-breakdowns-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading breakdowns…</p></div></div>
+            </div>
+
+            <div id="eq-tab-types" style="display:none">
+              <div class="flex gap-2 mb-2" style="align-items:center">
+                <span class="cell-sub">Catalog of equipment types (Caterpillar 745C, Komatsu PC2000, etc.). New types appear in the unit dialog.</span>
+                <span style="flex:1"></span>
+                <button class="btn btn-accent admin-only" onclick="eqOpenNewType()">➕ New Type</button>
+              </div>
+              <div id="eq-types-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading types…</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ATTENDANCE -->
+      <div class="page" id="page-attendance">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>✅ Attendance</h3>
+            <span class="cell-sub" style="align-self:center">Daily attendance tracking · Driven by the Shift Roster · Auto-detects approved leave</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>The list shows everyone scheduled on the chosen date (per the <strong>Shift Roster</strong>). Click <strong>✓ Mark All Present</strong> to bulk-mark everyone, then change any exceptions to Absent / Late / Excused / No Show. Employees on <strong>approved leave</strong> are flagged automatically with the leave type and don't need manual marking.</div>
+            </div>
+            <div class="flex gap-2 mb-2" style="align-items:center;border-bottom:1px solid #e2e8f0;padding-bottom:8px">
+              <button class="btn btn-primary" id="att-view-day-btn" onclick="attSetView('day')">📅 Daily</button>
+              <button class="btn btn-ghost"   id="att-view-month-btn" onclick="attSetView('month')">📊 Monthly Review</button>
+            </div>
+
+            <div id="att-view-day">
+              <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+                <label style="font-weight:600">Date</label>
+                <input type="date" id="att-date" onchange="loadAttendance()" style="max-width:180px">
+                <button class="btn btn-ghost btn-sm" onclick="attShift(-1)" title="Previous day">◀</button>
+                <button class="btn btn-ghost btn-sm" onclick="attShift(1)" title="Next day">▶</button>
+                <button class="btn btn-ghost btn-sm" onclick="attShift(0)" title="Today">📅 Today</button>
+                <span style="flex:1"></span>
+                <input id="att-search" placeholder="🔍 Search name / dept" oninput="attRenderRows()" style="max-width:240px">
+                <button class="btn btn-accent admin-only" onclick="attMarkAllPresent()">✓ Mark All Present</button>
+              </div>
+              <div id="att-summary" class="flex gap-2 mb-2 flex-wrap"></div>
+              <div id="att-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading attendance…</p></div></div>
+            </div>
+
+            <div id="att-view-month" style="display:none">
+              <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+                <label style="font-weight:600">Month</label>
+                <input type="month" id="att-month" onchange="loadAttendanceMonth()" style="max-width:170px">
+                <button class="btn btn-ghost btn-sm" onclick="attMonthShift(-1)" title="Previous month">◀</button>
+                <button class="btn btn-ghost btn-sm" onclick="attMonthShift(1)" title="Next month">▶</button>
+                <button class="btn btn-ghost btn-sm" onclick="attMonthShift(0)" title="This month">📅 This Month</button>
+                <label style="font-weight:600;margin-left:14px">Department</label>
+                <select id="att-month-dept" onchange="loadAttendanceMonth()" style="min-width:180px"><option value="">All departments</option></select>
+                <input id="att-month-search" placeholder="🔍 Search employee" oninput="attRenderMonth()" style="max-width:220px">
+                <span style="flex:1"></span>
+                <button class="btn btn-outline btn-sm" onclick="attExportMonthCsv()">⬇ Export CSV</button>
+                <button class="btn btn-outline btn-sm" onclick="window.print()">🖨 Print</button>
+              </div>
+              <div id="att-month-summary" class="flex gap-2 mb-2 flex-wrap"></div>
+              <div id="att-month-grid"><div class="empty-state"><div class="icon">⏳</div><p>Loading monthly review…</p></div></div>
+              <div class="cell-sub mt-2" style="display:flex;gap:14px;flex-wrap:wrap">
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#10b981;border-radius:3px"></span> Present</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#ef4444;border-radius:3px"></span> Absent</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#f59e0b;border-radius:3px"></span> Late</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#3b82f6;border-radius:3px"></span> Leave</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#dc2626;border-radius:3px"></span> No Show</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#8b5cf6;border-radius:3px"></span> Excused</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#e5e7eb;border-radius:3px"></span> Unmarked</span>
+                <span style="display:flex;align-items:center;gap:4px"><span style="display:inline-block;width:14px;height:14px;background:#fff;border:1px solid #cbd5e1;border-radius:3px"></span> Off / Not rostered</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEAVE TYPES & BOOKINGS -->
+      <div class="page" id="page-leave-types">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>🏖️ Leave Types &amp; Bookings</h3>
+            <span class="cell-sub" style="align-self:center">Manage leave categories · Book leave · Approved leave auto-shows on the Attendance page</span>
+          </div>
+          <div class="card-body">
+            <div class="lt-tabs flex gap-2 mb-2">
+              <button class="btn btn-primary" id="lt-tab-bookings-btn" onclick="ltSetTab('bookings')">📅 Bookings</button>
+              <button class="btn btn-ghost" id="lt-tab-types-btn" onclick="ltSetTab('types')">⚙️ Leave Types</button>
+            </div>
+
+            <div id="lt-tab-bookings">
+              <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+                <input id="lt-b-search" placeholder="🔍 Search employee" oninput="ltRenderBookings()" style="max-width:240px">
+                <select id="lt-b-status-filter" onchange="ltRenderBookings()">
+                  <option value="">All statuses</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Rejected">Rejected</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+                <span style="flex:1"></span>
+                <button class="btn btn-accent admin-only" onclick="ltOpenNewBooking()">➕ Book Leave</button>
+              </div>
+              <div id="lt-bookings-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading bookings…</p></div></div>
+            </div>
+
+            <div id="lt-tab-types" style="display:none">
+              <div class="flex gap-2 mb-2" style="align-items:center">
+                <span class="cell-sub">Manage the catalog of leave categories (Annual, Sick, etc.). New types appear in the booking dialog.</span>
+                <span style="flex:1"></span>
+                <button class="btn btn-accent admin-only" onclick="ltOpenNewType()">➕ New Leave Type</button>
+              </div>
+              <div id="lt-types-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading leave types…</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR DISCIPLINARY ACTION -->
+      <div class="page" id="page-disciplinary">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>⚖️ HR Disciplinary Action</h3>
+            <span class="cell-sub" style="align-self:center">Warnings · Performance issues · Auto-flagged leave over-entitlement · Document uploads</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>Track formal HR actions per employee. Upload supporting documents (warning letters, statements, photos). Approving a leave booking that pushes an employee past their entitlement <strong>automatically</strong> creates an "Open" action in this list.</div>
+            </div>
+            <div id="disc-stats" class="flex gap-2 mb-2 flex-wrap"></div>
+            <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+              <input id="disc-search" placeholder="🔍 Search employee / reason" oninput="discFilter()" style="flex:1;min-width:240px">
+              <select id="disc-status-filter" onchange="discFilter()">
+                <option value="">All statuses</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+              <select id="disc-severity-filter" onchange="discFilter()">
+                <option value="">All severities</option>
+                <option value="Critical">Critical</option>
+                <option value="Major">Major</option>
+                <option value="Minor">Minor</option>
+              </select>
+              <button class="btn btn-accent admin-only" onclick="discOpenNew()">➕ New Action</button>
+            </div>
+            <div id="disc-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading actions…</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR FORM BUILDER (reuses the Form Builder UI, filtered to FormCategory='hr') -->
+      <div class="page" id="page-hr-forms">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>📋 HR Form Builder</h3>
+            <span class="cell-sub" style="align-self:center">Build HR forms (warnings, performance reviews, disciplinary records). Same builder as Assessment Forms, scoped to HR.</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>HR templates live in the same form-builder pipeline as Assessment forms, but stay separate via the <code>FormCategory='hr'</code> tag. They can be attached to a Disciplinary Action so HR captures structured data alongside the document upload.</div>
+            </div>
+            <div class="flex gap-2 mb-2 flex-wrap" style="align-items:center">
+              <input id="hrf-search" placeholder="🔍 Search HR template name" oninput="hrfRender()" style="flex:1;min-width:240px">
+              <button class="btn btn-accent admin-only" onclick="hrfOpenNew()">➕ New HR Form Template</button>
+            </div>
+            <div id="hrf-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading HR templates…</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMPLOYEE ONBOARDING -->
+      <div class="page" id="page-onboarding">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>🧑‍💼 Employee Onboarding</h3>
+            <span class="cell-sub" style="align-self:center">CV uploads · Three-tier reviews · Role descriptions · Pre-employment medicals · Contracts</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>Track new-hire candidates from CV upload through three-tier review (Superintendent, Manager, Supervisor), pre-employment medical, and contract sign-off. Promote a fully-approved candidate to active staff in one click.</div>
+            </div>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <input id="onb-search" placeholder="🔍 Search name / email / position" oninput="onbFilter()" style="flex:1;min-width:240px">
+              <select id="onb-status-filter" onchange="onbFilter()">
+                <option value="">All statuses</option>
+                <option value="New">New</option>
+                <option value="CV Review">CV Review</option>
+                <option value="Interview">Interview</option>
+                <option value="Medical">Medical</option>
+                <option value="Contract">Contract</option>
+                <option value="Completed">Completed</option>
+                <option value="Withdrawn">Withdrawn</option>
+              </select>
+              <button class="btn btn-accent admin-only" onclick="onbOpenNew()">➕ New Candidate</button>
+            </div>
+            <div id="onb-summary" class="flex gap-2 mb-2 flex-wrap"></div>
+            <div id="onb-list"><div class="empty-state"><div class="icon">⏳</div><p>Loading candidates…</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAINING RECORDS -->
+      <div class="page" id="page-records">
+        <div class="card">
+          <div class="card-header">
+            <h3>Training Records</h3>
+            <button class="btn btn-accent" onclick="openRecordModal()">+ Add Record</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <select id="rec-staff" onchange="loadRecords()"><option value="">All Employees</option></select>
+              <select id="rec-cert" onchange="loadRecords()"><option value="">All Courses</option></select>
+              <select id="rec-dept" onchange="loadRecords()"><option value="">All Departments</option></select>
+              <select id="rec-shift" onchange="loadRecords()"><option value="">All Shift Patterns</option></select>
+              <select id="rec-state" onchange="loadRecords()">
+                <option value="">All States</option>
+                <option value="Completed">Completed</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Registered">Registered</option>
+              </select>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Employee</th><th>Course</th><th>Completed</th><th>Expires</th><th>State</th><th>Score</th><th>Pass</th><th>Actions</th></tr></thead>
+                <tbody id="rec-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REQUIREMENTS -->
+      <div class="page" id="page-requirements">
+        <div class="card">
+          <div class="card-header">
+            <h3>Training Requirements</h3>
+            <button class="btn btn-accent" onclick="openRqdModal()">+ Add Requirement</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <select id="rqd-cert" onchange="loadRqd()"><option value="">All Courses</option></select>
+              <select id="rqd-job" onchange="loadRqd()"><option value="">All Jobs</option></select>
+              <select id="rqd-dept" onchange="loadRqd()"><option value="">All Departments</option></select>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Course</th><th>Required For</th><th>Type</th><th>Due By</th><th>Actions</th></tr></thead>
+                <tbody id="rqd-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MY TRAINING (self-service) -->
+      <div class="page" id="page-my-training">
+        <div id="my-unlinked" class="hidden">
+          <div class="alert alert-info"><span>ℹ️</span><div>Your login isn't linked to an employee record yet. Ask an administrator to link your account under <strong>User Accounts</strong> to see your personal training here.</div></div>
+        </div>
+        <div id="my-content" class="hidden">
+          <div class="card"><div class="card-body" id="my-profile"></div></div>
+          <div class="stats-grid" id="my-stats"></div>
+          <div class="card">
+            <div class="card-header"><h3>✅ My Required Training</h3>
+              <button class="btn btn-outline btn-sm" onclick="viewMyTranscript()">📜 My Transcript</button></div>
+            <div class="card-body"><div class="table-responsive"><table>
+              <thead><tr><th>Course</th><th>Status</th><th>Last Completed</th><th>Expires</th></tr></thead>
+              <tbody id="my-req-tbody"></tbody></table></div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>📋 My Training History</h3></div>
+            <div class="card-body"><div class="table-responsive"><table>
+              <thead><tr><th>Course</th><th>Completed</th><th>Expires</th><th>Score</th><th>Result</th></tr></thead>
+              <tbody id="my-hist-tbody"></tbody></table></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONLINE EXAMS (take page) -->
+      <div class="page" id="page-exams">
+        <div class="card">
+          <div class="card-header">
+            <h3>📝 Online Exams</h3>
+            <div class="flex gap-2">
+              <span class="cell-sub" style="align-self:center">Select an exam below to take it</span>
+              <button class="btn btn-primary btn-sm admin-only" onclick="navigateTo('exam-builder')">🔨 Exam Builder</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <input class="search-box" id="exam-search" placeholder="Search exams..." oninput="loadExams()">
+            </div>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Exam Name</th><th>Linked Qualification</th><th>Questions</th><th>Pass Score</th><th>Time</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="exams-tbody"></tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXAM BUILDER (full dedicated page) -->
+      <div class="page" id="page-exam-builder">
+        <div class="eb-layout">
+          <!-- Left: exam list -->
+          <div class="eb-sidebar">
+            <div class="eb-sidebar-header">
+              <h3>📝 Exams</h3>
+              <button class="btn btn-accent btn-sm" onclick="ebNewExam()">+ New</button>
+            </div>
+            <input class="eb-search" id="eb-search" placeholder="Search exams..." oninput="ebFilterList()">
+            <div id="eb-exam-list" class="eb-exam-list"></div>
+          </div>
+
+          <!-- Right: builder panel -->
+          <div class="eb-panel" id="eb-panel">
+            <div class="eb-empty">
+              <div class="icon" style="font-size:52px;margin-bottom:12px">🔨</div>
+              <p>Select an exam from the list, or click <strong>+ New</strong> to create one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKFLOW ASSIGNMENT -->
+      <div class="page" id="page-workflows">
+        <div class="card">
+          <div class="card-header">
+            <h3>🔀 Workflow Assignment</h3>
+            <button class="btn btn-accent" onclick="openWorkflowModal()">+ New Workflow</button>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info"><span>ℹ️</span><div>Workflow items link a system event (training completed, exam passed/failed, etc.) to email notifications. When the event fires, TrainingPro emails the people you assign here — fixed addresses, the employee, and/or their supervisor. Configure your SMTP server under <strong>Email Settings</strong> first.</div></div>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Workflow</th><th>Trigger Event</th><th>Sends To</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="workflows-tbody"></tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN: EMAIL SETTINGS -->
+      <div class="page" id="page-admin-email">
+        <div class="card" style="max-width:680px">
+          <div class="card-header"><h3>✉️ Email / SMTP Settings</h3></div>
+          <div class="card-body">
+            <div class="alert alert-info"><span>ℹ️</span><div>Configure an SMTP server to send renewal reminders and the daily digest. For Gmail use an App Password.</div></div>
+            <div class="form-grid">
+              <div class="form-group"><label>SMTP Host</label><input id="cfg-smtp_host" placeholder="smtp.gmail.com"></div>
+              <div class="form-group"><label>Port</label><input id="cfg-smtp_port" type="number" placeholder="587"></div>
+              <div class="form-group"><label>Use SSL/TLS</label><select id="cfg-smtp_secure"><option value="0">No (STARTTLS)</option><option value="1">Yes (SSL)</option></select></div>
+              <div class="form-group"><label>Username</label><input id="cfg-smtp_user" placeholder="you@company.com"></div>
+              <div class="form-group"><label>Password <span id="cfg-pass-set" class="cell-sub"></span></label><input id="cfg-smtp_pass" type="password" placeholder="leave blank to keep"></div>
+              <div class="form-group"><label>From Address</label><input id="cfg-smtp_from" placeholder="TrainTrack <noreply@company.com>"></div>
+              <div class="form-group"><label>Digest Recipient(s)</label><input id="cfg-digest_to" placeholder="manager@company.com"></div>
+              <div class="form-group"><label>Daily Digest (6 AM)</label><select id="cfg-digest_enabled"><option value="0">Disabled</option><option value="1">Enabled</option></select></div>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="btn btn-accent" onclick="saveEmailSettings()">Save Settings</button>
+              <button class="btn btn-outline" onclick="testEmail()">✉ Send Test Email</button>
+              <button class="btn btn-outline" onclick="sendDigestNow()">📨 Send Digest Now</button>
+            </div>
+            <div id="email-result" class="mt-2"></div>
+          </div>
+        </div>
+
+        <div class="card mt-2" style="max-width:680px">
+          <div class="card-header"><h3>✨ AI Settings (Claude API)</h3></div>
+          <div class="card-body">
+            <div class="alert alert-info"><span>ℹ️</span><div>The <strong>Anthropic API key</strong> powers the ✨ AI Suggest feature in the Exam Builder. Get your key from <strong>console.anthropic.com</strong>. Stored securely in the database (not in code).</div></div>
+            <div class="form-grid">
+              <div class="form-group form-full"><label>Anthropic API Key</label><input id="cfg-anthropic-key" type="password" placeholder="sk-ant-…"></div>
+              <div class="form-group form-full"><label>OpenAI API Key <span class="text-soft" style="font-weight:400;font-size:12px">(optional — powers AI <em>photo</em> generation for Training Material Covers)</span></label><input id="cfg-openai-key" type="password" placeholder="sk-…"></div>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="btn btn-accent" onclick="saveAiKey()">Save API Keys</button>
+              <button class="btn btn-outline" onclick="testAiKey()">✨ Test Connection</button>
+            </div>
+            <div id="ai-key-result" class="mt-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN: AUDIT TRAIL -->
+      <div class="page" id="page-admin-audit">
+        <div class="tabs">
+          <div class="tab active" onclick="switchAuditTab('changes',this)">Change History</div>
+          <div class="tab" onclick="switchAuditTab('logins',this)">Login History</div>
+        </div>
+        <div class="card" id="audit-changes-card">
+          <div class="card-header"><h3>🛡️ Change History</h3>
+            <input class="search-box" id="audit-search" placeholder="Filter by user..." oninput="loadAudit()"></div>
+          <div class="card-body"><div class="table-responsive"><table>
+            <thead><tr><th>When</th><th>User</th><th>Table</th><th>Action</th><th>Record</th><th>Detail</th></tr></thead>
+            <tbody id="audit-tbody"></tbody></table></div></div>
+        </div>
+        <div class="card hidden" id="audit-logins-card">
+          <div class="card-header"><h3>🔐 Login History</h3></div>
+          <div class="card-body"><div class="table-responsive"><table>
+            <thead><tr><th>When</th><th>User</th><th>Status</th></tr></thead>
+            <tbody id="logins-tbody"></tbody></table></div></div>
+        </div>
+      </div>
+
+      <!-- TRAINING MATRIX -->
+      <div class="page" id="page-matrix">
+        <div class="card">
+          <div class="card-header">
+            <h3>🔲 Skills / Training Matrix</h3>
+            <div class="flex gap-2">
+              <select id="matrix-dept" onchange="loadMatrix()"><option value="">All Departments</option></select>
+              <button class="btn btn-outline btn-sm" onclick="exportMatrix()">⬇ Export CSV</button>
+              <button class="btn btn-outline btn-sm" onclick="window.print()">🖨 Print</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="matrix-legend">
+              <span><i class="sw current"></i> Current</span>
+              <span><i class="sw expiring"></i> Expiring (≤30d)</span>
+              <span><i class="sw expired"></i> Expired</span>
+              <span><i class="sw missing"></i> Required – Missing</span>
+              <span><i class="sw trained"></i> Trained (not required)</span>
+              <span><i class="sw na"></i> Not applicable</span>
+            </div>
+            <div class="table-responsive matrix-wrap" id="matrix-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTIFICATIONS / REMINDERS -->
+      <div class="page" id="page-notifications">
+        <div class="stats-grid" id="notif-stats"></div>
+        <div class="card">
+          <div class="card-header"><h3>🔴 Expired — Action Required</h3></div>
+          <div class="card-body"><div class="table-responsive"><table>
+            <thead><tr><th>Employee</th><th>Course</th><th>Expired</th><th>Email</th></tr></thead>
+            <tbody id="notif-expired"></tbody></table></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>⚠️ Expiring within 90 Days</h3></div>
+          <div class="card-body"><div class="table-responsive"><table>
+            <thead><tr><th>Employee</th><th>Course</th><th>Expires</th><th>Days Left</th><th>Email</th></tr></thead>
+            <tbody id="notif-expiring"></tbody></table></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>❌ Required Training Not Started</h3></div>
+          <div class="card-body"><div class="table-responsive"><table>
+            <thead><tr><th>Employee</th><th>Required Course</th><th>Email</th></tr></thead>
+            <tbody id="notif-missing"></tbody></table></div></div>
+        </div>
+      </div>
+
+      <!-- DOCUMENT LIBRARY -->
+      <div class="page" id="page-documents">
+        <div class="card">
+          <div class="card-header">
+            <h3>📎 Document Library</h3>
+            <div class="flex gap-2">
+              <input class="search-box" id="doc-search" placeholder="Search files..." oninput="loadDocuments()">
+              <select id="doc-type" onchange="loadDocuments()">
+                <option value="">All Categories</option>
+                <option value="staff">Employee Documents</option>
+                <option value="cert">Course Materials</option>
+                <option value="register">Record Evidence</option>
+                <option value="class">Class Files</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive"><table>
+              <thead><tr><th>File</th><th>Category</th><th>Attached To</th><th>Size</th><th>Uploaded By</th><th>Date</th><th>Actions</th></tr></thead>
+              <tbody id="doc-tbody"></tbody></table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPETENCY BUILDER (admin) -->
+      <div class="page" id="page-competency-builder">
+        <div class="flex items-center mb-2" style="justify-content:flex-end">
+          <button class="btn btn-outline btn-sm" onclick="openCompBuilderReport()">📊 Full Report</button>
+        </div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>🏗️ Competency Frameworks</h3>
+              <button class="btn btn-accent" onclick="openCompFrameworkModal()">+ Add Framework</button>
+            </div>
+            <div class="card-body" id="comp-frameworks-list"></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>⭐ Competencies</h3>
+              <button class="btn btn-accent" onclick="openCompModal()">+ Add Competency</button>
+            </div>
+            <div class="card-body">
+              <div class="toolbar mb-2">
+                <select id="comp-filter-fw" onchange="loadCompetencies()"><option value="">All Frameworks</option></select>
+              </div>
+              <div id="comp-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header">
+            <h3>🔗 Job / Department Requirements</h3>
+            <button class="btn btn-accent" onclick="openCompReqModal()">+ Link Competency</button>
+          </div>
+          <div class="card-body" id="comp-reqs-list"></div>
+        </div>
+      </div>
+
+      <!-- COMPETENCY GAP ANALYSIS -->
+      <div class="page" id="page-competency">
+        <div class="card">
+          <div class="card-header">
+            <h3>📊 Competency Gap Analysis</h3>
+            <button class="btn btn-ghost btn-sm" onclick="navigateTo('competency-builder')">Manage Frameworks →</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar mb-2">
+              <select id="gap-dept" onchange="loadCompetency()"><option value="">All Departments</option></select>
+              <select id="gap-job" onchange="loadCompetency()"><option value="">All Job Titles</option></select>
+              <input class="search-box" id="gap-search" placeholder="Search employee..." oninput="filterGapTable()">
+            </div>
+            <div id="gap-summary" class="stats-grid mb-2"></div>
+            <div id="gap-table"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KNOWLEDGE BASE -->
+      <div class="page" id="page-knowledge-base">
+        <div class="card">
+          <div class="card-header">
+            <h3>📚 Knowledge Base</h3>
+            <div class="flex gap-2">
+              <input class="search-box" id="kb-search" placeholder="Search articles..." oninput="searchKB()">
+              <button class="btn btn-accent admin-only" onclick="openKBArticleModal()">+ New Article</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="kb-categories" class="kb-cats mb-2"></div>
+            <div id="kb-articles"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS -->
+      <div class="page" id="page-analytics">
+        <div class="stats-grid" id="an-stats"></div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header"><h3>📈 Monthly Completions (12 months)</h3></div>
+            <div class="card-body"><div class="chart-box"><canvas id="chart-an-monthly"></canvas></div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>🍩 Completions by Type</h3></div>
+            <div class="card-body"><div class="chart-box"><canvas id="chart-an-type"></canvas></div></div>
+          </div>
+        </div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header"><h3>🏢 Completions by Department</h3></div>
+            <div class="card-body"><div class="chart-box" style="height:280px"><canvas id="chart-an-dept"></canvas></div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>🏆 Top 10 Courses</h3></div>
+            <div class="card-body"><div class="chart-box" style="height:280px"><canvas id="chart-an-courses"></canvas></div></div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><h3>✅ Recent Completions</h3></div>
+          <div class="card-body" id="an-recent"></div>
+        </div>
+      </div>
+
+      <!-- TRAINING STANDARDS -->
+      <div class="page" id="page-training-standards">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>📐 Training Standards</h3>
+            <button class="btn btn-accent" onclick="navigateTo('content-studio')">🤖 Generate New Document</button>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px"><span>ℹ️</span><div>This library holds AI-generated <strong>Training Standards, Policies, Standards, Plans</strong> and <strong>Checklists</strong>. Use <em>AI Content Studio → Training Standards / Policy / Standard / Plan / Checklist</em> to create documents.</div></div>
+            <div id="ts-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAINING MATERIAL -->
+      <div class="page" id="page-training-material">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>🗂️ Training Material</h3>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px"><span>ℹ️</span><div>Training material organised into folders (e.g. <strong>Haul Truck Training Material</strong>, <strong>CAT777</strong>, <strong>CAT745</strong>). Create documents in <em>AI Content Studio</em> and choose <em>Save destination → Training Material → folder</em>.</div></div>
+            <div id="tm-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAINING MATERIAL COVERS -->
+      <div class="page" id="page-training-covers">
+        <div class="card mb-2">
+          <div class="card-header"><h3>🖼️ Training Material Covers</h3></div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px"><span>ℹ️</span><div>Build the <strong>cover page</strong> a trainee sees first when opening a training material. Pick a training material below — its details auto-fill — then edit and build the cover.</div></div>
+            <div class="cs-row" style="margin-bottom:12px">
+              <label style="font-weight:600">Training material</label>
+              <select id="tc-material" onchange="tcSelectMaterial()" style="min-width:320px"><option value="">— select training material —</option></select>
+            </div>
+            <div id="tc-builder" style="display:none">
+              <div class="tc-grid">
+                <div class="cs-row"><label>Cover title</label><input id="tc-title" oninput="tcRenderPreview()"></div>
+                <div class="cs-row"><label>Subtitle</label><input id="tc-sub" oninput="tcRenderPreview()"></div>
+                <div class="cs-row"><label>Document No.</label><input id="tc-docno" oninput="tcRenderPreview()"></div>
+                <div class="cs-row"><label>Version</label><input id="tc-version" value="1.0" oninput="tcRenderPreview()"></div>
+                <div class="cs-row"><label>Date</label><input id="tc-date" type="date" oninput="tcRenderPreview()"></div>
+                <div class="cs-row"><label>Audience</label><input id="tc-audience" placeholder="e.g. Haul truck operators" oninput="tcRenderPreview()"></div>
+              </div>
+              <div class="cs-row" style="margin-top:8px"><label>Overview</label>
+                <textarea id="tc-overview" rows="3" placeholder="Short overview shown on the cover" oninput="tcRenderPreview()"></textarea></div>
+              <div class="cs-row" style="margin-top:6px;align-items:center;gap:8px">
+                <label class="flex items-center gap-2" style="font-weight:500;color:var(--text);cursor:pointer">
+                  <input type="checkbox" id="tc-hide-meta" onchange="tcRenderPreview()" style="width:16px;height:16px;accent-color:var(--primary)">
+                  <span>🚫 Hide document metadata on cover</span>
+                </label>
+                <span class="cell-sub" style="font-size:11px;flex:1">Hides the Doc No. (top-right) and the Folder / Version / Date / Audience chip strip from the cover preview and the printed / .docx output. Useful for trainee-facing covers where the metadata isn't relevant.</span>
+              </div>
+              <div class="tc-img-row">
+                <label style="font-weight:600">Cover image</label>
+                <input type="file" id="tc-img-file" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="tcImgUpload(this)">
+                <button class="btn btn-outline btn-sm" onclick="document.getElementById('tc-img-file').click()">📷 Upload image</button>
+                <input id="tc-img-prompt" placeholder="equipment, e.g. haul truck, grader, excavator" style="min-width:220px">
+                <button class="btn btn-outline btn-sm" id="tc-img-photo-btn" onclick="tcGenImage('photo')">🖼️ AI photo</button>
+                <button class="btn btn-outline btn-sm" id="tc-img-gen-btn" onclick="tcGenImage('svg')">🤖 AI illustration</button>
+                <button class="btn btn-ghost btn-sm" onclick="tcClearImage()">Clear image</button>
+                <span class="cell-sub" style="flex-basis:100%;font-size:11px"><b>AI photo</b> = realistic image (OpenAI; embeds in print &amp; .docx; needs an OpenAI key in AI Settings). <b>AI illustration</b> = Claude-drawn SVG (print/screen only). <b>Upload</b> works everywhere.</span>
+              </div>
+              <div class="tc-row-actions flex gap-2" style="margin:12px 0">
+                <button class="btn btn-accent" onclick="printCover()">🖨 Print cover</button>
+                <button class="btn btn-success" onclick="tcBuildCover()">✅ Build &amp; Save Cover (.docx)</button>
+                <span id="tc-result" class="cell-sub"></span>
+              </div>
+              <div class="tc-preview-wrap"><div id="tc-preview" class="tc-preview"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPETENCY CERTIFICATES -->
+      <div class="page" id="page-competency-certificates">
+        <div class="card mb-2">
+          <div class="card-header"><h3>🎖️ Competency Certificates</h3></div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px"><span>ℹ️</span><div>Build a professional, print-ready <strong>Certificate of Achievement</strong> (landscape, Akara theme &amp; logo). Fill in the details, optionally upload a <strong>background image</strong> (sits faded in the bottom-right corner) and signatures, then <strong>Print</strong> (→ Save as PDF) or <strong>Build &amp; Save (.docx)</strong>.</div></div>
+            <div class="cert-form">
+              <div class="cs-row"><label>Certificate title</label><input id="cert-title" value="CERTIFICATE OF ACHIEVEMENT" oninput="certRenderPreview()"></div>
+              <div class="cs-row"><label>Certificate title — local language <span class="cell-sub">(optional — auto-filled when you translate the title)</span></label><input id="cert-sub-local" placeholder="e.g. ใบประกาศนียบัตรแห่งความสำเร็จ" oninput="certRenderPreview()"></div>
+              <div class="tc-grid">
+                <div class="cs-row"><label>Course / competency <span class="cell-sub">(sets the auto-number sequence &amp; library category)</span></label><input id="cert-course" value="CAT 777 Dump Truck Operator" oninput="certRenderPreview();certLoadNextNumber()"></div>
+                <div class="cs-row"><label>Certificate number <span class="cell-sub">(auto — per course)</span></label><input id="cert-number" placeholder="auto" readonly oninput="certRenderPreview()"></div>
+              </div>
+              <div class="tc-grid">
+                <div class="cs-row"><label>Recipient name (English)</label><input id="cert-trainee" placeholder="MR. WONGSAKORN BUNYASAK" oninput="certRenderPreview()"></div>
+                <div class="cs-row"><label>Recipient name (local language) <span class="cell-sub">(optional)</span></label><input id="cert-trainee-local" placeholder="นายวงศกร บุญญาศักดิ์" oninput="certRenderPreview()"></div>
+                <div class="cs-row"><label>Award date</label><input id="cert-issue" type="date" oninput="certRenderPreview()"></div>
+              </div>
+              <div class="cs-row"><label>Achievement statement (English)</label><textarea id="cert-statement" rows="2" oninput="certRenderPreview()">Has been deemed a competent CAT 777 Dump Truck Operator</textarea></div>
+              <div class="cs-row"><label>Achievement statement (local language) <span class="cell-sub">(optional — auto-filled by Translate)</span></label><textarea id="cert-statement-local" rows="2" oninput="certRenderPreview()"></textarea></div>
+              <div class="cert-trans-panel">
+                <div class="cs-trans-bar" style="margin:0 0 8px">
+                  <span class="cs-trans-label">🌐 Translate</span>
+                  <select id="cert-trans-lang"><option value="">— select language —</option>
+                    <option value="Thai">Thai — ภาษาไทย</option><option value="Spanish">Spanish — Español</option>
+                    <option value="French">French — Français</option><option value="Portuguese">Portuguese — Português</option>
+                    <option value="Mandarin Chinese">Mandarin Chinese — 中文</option><option value="Indonesian">Indonesian — Bahasa Indonesia</option>
+                    <option value="Malay">Malay — Bahasa Melayu</option><option value="Vietnamese">Vietnamese — Tiếng Việt</option>
+                    <option value="Tagalog">Tagalog — Filipino</option><option value="Hindi">Hindi — हिंदी</option>
+                    <option value="Arabic">Arabic — العربية</option><option value="Japanese">Japanese — 日本語</option>
+                    <option value="Korean">Korean — 한국어</option><option value="German">German — Deutsch</option>
+                    <option value="Italian">Italian — Italiano</option><option value="Russian">Russian — Русский</option>
+                  </select>
+                  <span class="cs-trans-order">order:
+                    <button type="button" class="btn btn-sm active" id="cert-ord-en" onclick="certSetTransOrder('en-first')">English first</button>
+                    <button type="button" class="btn btn-sm" id="cert-ord-lang" onclick="certSetTransOrder('lang-first')">Translation first</button>
+                    <span class="cell-sub">(applies to “Side”)</span>
+                  </span>
+                  <button type="button" class="btn btn-accent btn-sm" id="cert-trans-btn" onclick="certTranslate()">🌐 Translate selected</button>
+                  <span id="cert-trans-status" class="cell-sub"></span>
+                </div>
+                <div class="cell-sub" style="margin:0 0 6px">Tick each item to translate and choose where the translation sits. Un-ticked items stay English-only. Uses the approved terminology glossary.</div>
+                <div id="cert-trans-items"></div>
+              </div>
+              <div class="tc-grid">
+                <div class="cs-row"><label>Signatory 1 — name</label><input id="cert-sign1-name" placeholder="MR. JOHN MILLS" oninput="certRenderPreview()"></div>
+                <div class="cs-row"><label>Signatory 1 — role</label><input id="cert-sign1-role" placeholder="Mining Superintendent" oninput="certRenderPreview()"></div>
+                <div class="cs-row"><label>Signatory 1 — organisation <span class="cell-sub">(optional)</span></label><input id="cert-sign1-org" placeholder="Akara Resources" oninput="certRenderPreview()"></div>
+              </div>
+              <div class="cs-row"><label>Signatory 1 — signature <span class="cell-sub">(draw below, or upload an image)</span></label>
+                <canvas id="sig-cert1" class="sigpad cert-sigpad" width="620" height="120"></canvas>
+                <div class="flex gap-2" style="margin-top:4px">
+                  <button type="button" class="btn btn-accent btn-sm" onclick="certApplyPad(1)">✓ Use drawn signature</button>
+                  <label class="btn btn-outline btn-sm" style="cursor:pointer;margin:0">⬆ Upload image<input id="cert-sig1-upload" type="file" accept="image/*" onchange="certSetSig(this,1)" style="display:none"></label>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="certClearSig(1)">Clear</button>
+                </div>
+              </div>
+              <div class="tc-grid">
+                <div class="cs-row"><label>Signatory 2 — name</label><input id="cert-sign2-name" placeholder="MR. MASON BLUM" oninput="certRenderPreview()"></div>
+                <div class="cs-row"><label>Signatory 2 — role</label><input id="cert-sign2-role" placeholder="Mine Operations &amp; Maintenance Training Superintendent" oninput="certRenderPreview()"></div>
+                <div class="cs-row"><label>Signatory 2 — organisation <span class="cell-sub">(optional)</span></label><input id="cert-sign2-org" placeholder="Akara Resources" oninput="certRenderPreview()"></div>
+              </div>
+              <div class="cs-row"><label>Signatory 2 — signature <span class="cell-sub">(draw below, or upload an image)</span></label>
+                <canvas id="sig-cert2" class="sigpad cert-sigpad" width="620" height="120"></canvas>
+                <div class="flex gap-2" style="margin-top:4px">
+                  <button type="button" class="btn btn-accent btn-sm" onclick="certApplyPad(2)">✓ Use drawn signature</button>
+                  <label class="btn btn-outline btn-sm" style="cursor:pointer;margin:0">⬆ Upload image<input id="cert-sig2-upload" type="file" accept="image/*" onchange="certSetSig(this,2)" style="display:none"></label>
+                  <button type="button" class="btn btn-outline btn-sm" onclick="certClearSig(2)">Clear</button>
+                </div>
+              </div>
+              <div class="cs-row"><label>🖼 Background image <span class="cell-sub">(uploaded by you — sits faded in the bottom-right corner, e.g. a machine photo)</span></label>
+                <div class="flex gap-2 items-center"><input id="cert-bg-upload" type="file" accept="image/*" onchange="certSetBg(this)"><button type="button" class="btn btn-outline btn-sm" onclick="certClearBg()">Clear background</button></div>
+              </div>
+              <div class="tc-row-actions flex gap-2" style="margin:12px 0">
+                <button class="btn btn-accent" onclick="certPrint()">🖨 Print certificate (→ Save as PDF)</button>
+                <button class="btn btn-success" onclick="certBuild()">✅ Build &amp; Save (.docx)</button>
+                <span id="cert-result" class="cell-sub"></span>
+              </div>
+              <div class="tc-preview-wrap"><div id="cert-preview" class="cert-preview"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>📚 Certificate Library</h3><button class="btn btn-outline btn-sm" onclick="loadCertLibrary()">↻ Refresh</button></div>
+          <div class="card-body">
+            <div class="table-responsive"><table>
+              <thead><tr><th>Certificate</th><th>Course</th><th>No.</th><th>Issued</th><th>By</th><th>Actions</th></tr></thead>
+              <tbody id="cert-lib-tbody"><tr><td colspan="6" class="cell-sub">No certificates saved yet.</td></tr></tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI CONTENT STUDIO -->
+      <div class="page" id="page-content-studio">
+        <div class="card">
+          <div class="card-header"><h3>🤖 AI Content Studio</h3>
+            <span class="cell-sub" style="align-self:center">Phase 2 · generate training content with AI</span></div>
+          <div class="card-body">
+            <div class="alert alert-info"><span>ℹ️</span><div>Pick what to build, optionally choose a source document for the AI to base it on, and describe what you want. The AI creates a <strong>draft</strong> in the right module (Exam Builder, Form Builder, or Document Library) — pending your review and approval.</div></div>
+            <div class="form-grid">
+              <div class="form-group"><label>1. What do you want to build?</label><select id="cs-type" onchange="csTypeChange()"></select></div>
+            </div>
+            <div id="cs-formdoc-hint" class="alert alert-info" style="display:none;margin:0 0 12px">
+              <span>📄</span>
+              <div>Saves an <strong>exact copy</strong> of your uploaded Word document as a reusable <strong>Template Form</strong> — every table, merged cell, column width and fill-in space kept as-is — then rebranded to your organisation: company letterhead, header cells recoloured to your <strong>brand colour scheme</strong>, and third-party organisation names swapped for yours automatically. Choose the document under <strong>Source document</strong> below; the description box is optional.</div>
+            </div>
+            <div class="form-group form-full">
+              <label>2. Document 1 — layout &amp; structure <span class="text-soft" style="font-weight:400;font-size:12px">(optional)</span></label>
+              <div class="cs-src-tabs">
+                <button class="cs-src-tab active" data-tab="library" onclick="csSrcTab('library',this)">📂 From library</button>
+                <button class="cs-src-tab" data-tab="upload" onclick="csSrcTab('upload',this)">📤 Upload document</button>
+              </div>
+              <div id="cs-src-library">
+                <select id="cs-source" onchange="if(typeof csResetForms==='function')csResetForms()"><option value="">— None (prompt only) —</option></select>
+              </div>
+              <div id="cs-src-upload-panel" style="display:none">
+                <div class="cs-src-dropzone" id="cs-src-dropzone"
+                     ondragover="event.preventDefault();this.classList.add('cs-drag-over')"
+                     ondragleave="this.classList.remove('cs-drag-over')"
+                     ondrop="csSrcDrop(event);this.classList.remove('cs-drag-over')">
+                  <input type="file" id="cs-src-file" accept=".docx,.pdf,.pptx,.png,.jpg,.jpeg,.webp" style="display:none" onchange="csSrcFileChosen(this)">
+                  <div class="cs-src-drop-inner" onclick="document.getElementById('cs-src-file').click()">
+                    <div class="cs-src-drop-icon">📎</div>
+                    <div>Drop a file here or <u>click to browse</u></div>
+                    <div class="cs-src-drop-hint">DOCX · PDF · PNG · JPG · WEBP — up to 50 MB</div>
+                  </div>
+                </div>
+                <div id="cs-src-file-info" style="display:none" class="cs-src-file-info"></div>
+                <div id="cs-src-mode-row" style="display:none" class="cs-src-mode-row">
+                  <div class="cs-src-mode-title">How should the AI use this document?</div>
+                  <label class="cs-src-mode-opt">
+                    <input type="radio" name="cs-src-mode" value="reference" checked>
+                    <span><strong>📖 Reference only</strong><br>AI creates fresh content informed by this document</span>
+                  </label>
+                  <label class="cs-src-mode-opt">
+                    <input type="radio" name="cs-src-mode" value="transform">
+                    <span><strong>✏️ Transform / rewrite</strong><br>AI restructures and improves this document into the selected format</span>
+                  </label>
+                </div>
+                <div id="cs-src-upload-status" class="cell-sub" style="margin-top:4px"></div>
+              </div>
+            </div>
+
+            <div class="form-group form-full" id="cs-srcimg-panel">
+              <label>🖼 Images from the uploaded document</label>
+              <div class="cs-tm-opts" style="border:none;padding:0;margin:0">
+                <label class="cs-opt-check" title="When on, the pictures, diagrams and figures from your uploaded Document 1 are carried into the new document and placed where they best fit the content."><input type="checkbox" id="cs-srcimg-use" checked> Use the uploaded document’s images in the created document</label>
+              </div>
+              <div class="cs-reg-hint" style="font-size:11px;opacity:.8;margin-top:4px">Attach a document above (Document 1) first. Its pictures are placed into document types that support embedded images — manuals, SOPs, courses, handouts, decks, policies, etc. (Exams and Excel spreadsheets have nowhere to place pictures; an exact-copy form always keeps its own images.)</div>
+            </div>
+
+            <div class="form-group form-full">
+              <label>3. Document 2 — combine with Document 1 <span class="text-soft" style="font-weight:400;font-size:12px">(optional)</span></label>
+              <div class="alert alert-info" style="margin:0 0 8px">
+                <span>🔀</span>
+                <div>Add a second document to <strong>combine</strong> with Document 1. The AI <strong>analyses both documents and merges their information</strong> into one document — bringing together the content, specs, procedures, tables and figures from <strong>both</strong>, section by section. Document 1 provides the structure; unique information from each is kept, overlapping topics are merged into one clean treatment. If the two genuinely conflict on the same current value, the more recent/specific one is used. Site-specific facts still come from the Knowledge Base below.</div>
+              </div>
+              <div class="cs-src-tabs">
+                <button class="cs-content-tab active" data-tab="library" onclick="csContentSrcTab('library',this)">📂 From library</button>
+                <button class="cs-content-tab" data-tab="upload" onclick="csContentSrcTab('upload',this)">📤 Upload document</button>
+              </div>
+              <div id="cs-content-library">
+                <select id="cs-content-source"><option value="">— None —</option></select>
+              </div>
+              <div id="cs-content-upload-panel" style="display:none">
+                <div class="cs-src-dropzone" id="cs-content-dropzone"
+                     ondragover="event.preventDefault();this.classList.add('cs-drag-over')"
+                     ondragleave="this.classList.remove('cs-drag-over')"
+                     ondrop="csContentDrop(event);this.classList.remove('cs-drag-over')">
+                  <input type="file" id="cs-content-file" accept=".docx,.pdf,.pptx,.png,.jpg,.jpeg,.webp" style="display:none" onchange="csContentFileChosen(this)">
+                  <div class="cs-src-drop-inner" onclick="document.getElementById('cs-content-file').click()">
+                    <div class="cs-src-drop-icon">📎</div>
+                    <div>Drop the second document to combine here or <u>click to browse</u></div>
+                    <div class="cs-src-drop-hint">DOCX · PDF · PNG · JPG · WEBP — up to 50 MB</div>
+                  </div>
+                </div>
+                <div id="cs-content-file-info" style="display:none" class="cs-src-file-info"></div>
+                <div id="cs-content-upload-status" class="cell-sub" style="margin-top:4px"></div>
+              </div>
+            </div>
+            <div class="form-group form-full" id="cs-refdocs-panel">
+              <label>➕ More reference documents <span class="text-soft" style="font-weight:400;font-size:12px">(optional — add several; the AI reads them ALL to build the document)</span></label>
+              <div class="alert alert-info" style="margin:0 0 8px">
+                <span>📚</span>
+                <div>Upload <strong>one or more</strong> extra documents for the AI to <strong>reference and combine</strong> when building this document — useful for a training plan drawn from several source materials. Every document you add here is read in full and its relevant content is used, alongside Document 1/2 and the Knowledge Base.</div>
+              </div>
+              <div class="cs-src-dropzone" id="cs-refdocs-dropzone"
+                   ondragover="event.preventDefault();this.classList.add('cs-drag-over')"
+                   ondragleave="this.classList.remove('cs-drag-over')"
+                   ondrop="csRefDocsDrop(event);this.classList.remove('cs-drag-over')">
+                <input type="file" id="cs-refdocs-file" accept=".docx,.pdf,.pptx" multiple style="display:none" onchange="csRefDocsChosen(this)">
+                <div class="cs-src-drop-inner" onclick="document.getElementById('cs-refdocs-file').click()">
+                  <div class="cs-src-drop-icon">📚</div>
+                  <div>Drop one or more reference documents here or <u>click to browse</u></div>
+                  <div class="cs-src-drop-hint">DOCX · PDF · PPTX — add as many as you need (up to 10)</div>
+                </div>
+              </div>
+              <div id="cs-refdocs-list" class="cs-refdocs-list" style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px"></div>
+              <div id="cs-refdocs-status" class="cell-sub" style="margin-top:4px"></div>
+            </div>
+            <div class="form-group form-full" id="cs-kb-panel" style="display:none">
+              <label>4. Knowledge Base context <span class="text-soft" style="font-weight:400;font-size:12px">(optional — tick articles with site-specific facts)</span></label>
+              <div class="cs-kb-toolbar">
+                <input type="text" id="cs-kb-search" placeholder="🔍 Search articles…" oninput="csKbFilter(this.value)" class="cs-kb-search">
+                <button type="button" class="btn btn-ghost btn-sm" onclick="csKbRefresh()" title="Reload the latest Knowledge Base articles">↻ Refresh</button>
+                <label class="cs-kb-all-label"><input type="checkbox" id="cs-kb-select-all" onchange="csKbToggleAll(this)"> Select all</label>
+              </div>
+              <div id="cs-kb-list" class="cs-kb-list"></div>
+            </div>
+            <div class="form-group form-full" id="cs-audience-panel">
+              <label>Audience adaptation <span class="text-soft" style="font-weight:400;font-size:12px">(optional — adapts wording, and for exams the question style; competency rigour, safety facts, numbers &amp; limits are always preserved)</span></label>
+              <div class="cs-audience-row">
+                <label class="cs-audience-field">Reading / literacy level
+                  <select id="cs-learning-profile"><option value="">— Document default —</option></select>
+                </label>
+                <label class="cs-audience-field">Technical depth
+                  <select id="cs-tech-depth"><option value="">— Document default —</option></select>
+                </label>
+              </div>
+            </div>
+            <div class="form-group form-full" id="cs-recordopts-panel" style="display:none">
+              <label>Record form options</label>
+              <div class="cs-tm-opts" style="border:none;padding:0;margin:0">
+                <label class="cs-opt-check" title="Base the record form on the structure of the document you upload above (Document 1)"><input type="checkbox" id="cs-rf-copy"> 📄 Copy layout from the uploaded document</label>
+                <label class="cs-opt-check" title="Include the colour-coded AKARA Risk Rank Matrix (appears in the HTML export)"><input type="checkbox" id="cs-rf-risk"> 🔢 Add risk assessment matrix (AKARA colour)</label>
+                <label class="cs-opt-check" title="Omit competency / course / assessment / trainer sign-off fields — keep only general record fields"><input type="checkbox" id="cs-rf-notraining"> 🧹 Remove training-specific content (non-training record)</label>
+              </div>
+            </div>
+            <div class="form-group form-full" id="cs-doccontrol-panel" style="display:none">
+              <label>🗂 Document / version control</label>
+              <div class="cs-tm-opts" style="border:none;padding:0;margin:0">
+                <label class="cs-opt-check" title="Add a Document Control block — document number, version/revision, dates, owner, approver, revision history"><input type="checkbox" id="cs-rf-doccontrol" onchange="csToggleDocControl()"> Add document control / version control</label>
+              </div>
+              <div id="cs-rf-dc-opts" class="cs-dc-opts" style="display:none">
+                <div class="cs-dc-head">Document control functions to include:</div>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="number" checked> Document Number</label>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="version" checked> Version / Revision</label>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="effective" checked> Effective Date</label>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="review" checked> Next Review Date</label>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="owner" checked> Document Owner</label>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="approved" checked> Approved By</label>
+                <label class="cs-opt-check"><input type="checkbox" class="cs-dc-el" value="revhist"> Revision History (version log)</label>
+              </div>
+            </div>
+            <div class="form-group form-full" id="cs-tmopts-panel" style="display:none">
+              <label>🖼 Suggested images</label>
+              <div class="cs-tm-opts" style="border:none;padding:0;margin:0">
+                <label class="cs-opt-check" title="For each content section, the AI writes a ready-to-paste ChatGPT / DALL·E prompt for the image that best explains it."><input type="checkbox" id="cs-tm-imgsuggest" checked onchange="csToggleImgStyle()"> 🖼 Suggest an image for each section (ChatGPT / DALL·E prompt)</label>
+              </div>
+              <div id="cs-imgstyle-row" class="cs-imgstyle-row">
+                <label>Image style
+                  <select id="cs-img-style">
+                    <option value="clean modern flat corporate illustration (Averta style)">Averta — modern flat illustration</option>
+                    <option value="realistic professional photograph">Realistic photo</option>
+                    <option value="flat vector illustration">Flat vector illustration</option>
+                    <option value="clear labelled technical line diagram">Technical line diagram</option>
+                  </select></label>
+                <label>People / region
+                  <select id="cs-img-region">
+                    <option value="Thailand">Thailand</option>
+                    <option value="Southeast Asia">Southeast Asia</option>
+                    <option value="Australia">Australia</option>
+                    <option value="">International / generic</option>
+                  </select></label>
+                <label>People shown
+                  <select id="cs-img-gender">
+                    <option value="Both">Male &amp; female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select></label>
+              </div>
+            </div>
+            <div class="form-group form-full" id="cs-detect-panel" style="display:none">
+              <label id="cs-detect-label">Analyse the uploaded document</label>
+              <div class="cs-rf-detect">
+                <button type="button" class="btn btn-outline btn-sm" id="cs-rf-detect-btn" onclick="csDetectForms()" title="Scan the uploaded document and list the items it contains, so you can choose which one to build">🔍 Analyse document</button>
+                <span class="cs-rf-detect-hint text-soft" id="cs-detect-hint">Upload a document above, then analyse it to pick which one to create.</span>
+              </div>
+              <div id="cs-forms-list" class="cs-forms-list" style="display:none"></div>
+            </div>
+            <div class="form-group form-full"><label>5. Describe what the AI should build</label>
+              <textarea id="cs-prompt" rows="4" placeholder="e.g. Create a 10-question exam on haul truck pre-start safety checks, single-choice, 80% pass mark. / Build a competency assessment for confined space entry with sign-offs. / Write an SOP for isolating a conveyor."></textarea></div>
+            <div class="flex gap-2 mt-1">
+              <button class="btn btn-outline" id="cs-map-btn" onclick="csOpenMapPreview()" style="display:none" title="Map the uploaded source into this template's sections and review before generating">🗺 Preview mapping</button>
+              <button class="btn btn-accent" id="cs-go" onclick="runContentGen()">🤖 Generate</button>
+              <button class="btn btn-outline btn-sm" id="cs-regen" onclick="regenContent()" style="display:none">🔄 Regenerate</button>
+              <span id="cs-status" class="cell-sub" style="align-self:center"></span>
+            </div>
+            <div id="cs-result" class="mt-2"></div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><h3>📜 Generation History</h3></div>
+          <div class="card-body" id="cs-history"></div>
+        </div>
+      </div>
+
+      <!-- TRAINING POWERPOINT DEVELOPER -->
+      <div class="page" id="page-powerpoints">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>🎞️ Training PowerPoint Developer</h3>
+            <span class="cell-sub" style="align-self:center">Upload · Develop with AI · Translate · Brand-themed slide templates</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>A central developer for <strong>training slide decks</strong>. Upload existing <code>.pptx</code> files, or click <strong>🤖 Develop with AI</strong> to draft a new deck from a topic + training template — the AI builds a slide outline you can edit, translate into another language, then download as a real branded PowerPoint file.</div>
+            </div>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <input id="pp-search" placeholder="🔍 Search by name or category" oninput="filterPowerpoints()" style="flex:1;min-width:240px">
+              <select id="pp-cat-filter" onchange="filterPowerpoints()">
+                <option value="">All categories</option>
+              </select>
+              <button class="btn btn-accent admin-only" onclick="ppOpenDevelop()" title="Use AI to draft a new slide deck from a topic + template">🤖 Develop with AI</button>
+              <button class="btn btn-primary admin-only" onclick="document.getElementById('pp-upload').click()" title="Upload an existing .pptx file">⬆ Upload PPTX</button>
+              <input type="file" id="pp-upload" class="hidden" accept=".pptx,.ppt" onchange="uploadPowerpoint(this)">
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Deck Name</th>
+                    <th>Category</th>
+                    <th>Slides</th>
+                    <th>Size</th>
+                    <th>Uploaded</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="pp-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading PowerPoint presentations…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEMPLATE FORMS -->
+      <div class="page" id="page-template-forms">
+        <div class="card mb-2">
+          <div class="card-header">
+            <h3>📋 Template Forms</h3>
+            <span class="cell-sub" style="align-self:center">Reusable downloadable form templates</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info" style="margin-bottom:12px">
+              <span>ℹ️</span>
+              <div>A central library of <strong>blank form templates</strong> the team can download, fill in offline, and submit. Admins can upload new templates (DOCX, PDF, XLSX, or CSV). Anyone with access can download.</div>
+            </div>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <input class="tf-search" placeholder="🔍 Search templates by name or category" oninput="filterTemplateForms()" style="flex:1;min-width:240px">
+              <select class="tf-cat-filter" onchange="filterTemplateForms()">
+                <option value="">All categories</option>
+              </select>
+              <button class="btn btn-primary btn-sm admin-only" onclick="document.getElementById('tf-upload').click()">⬆ Upload Template</button>
+              <input type="file" id="tf-upload" class="hidden" accept=".docx,.pdf,.xlsx,.xls,.csv,.doc" onchange="uploadTemplateForm(this)">
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Template Name</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Uploaded</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="tf-tbody">
+                  <tr><td colspan="6" class="empty-state">Loading template forms…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI DOCUMENT TRANSLATOR -->
+      <div class="page" id="page-translator">
+        <div id="tr-metrics"></div>
+        <div class="card">
+          <div class="card-header"><h3>🌐 AI Document Translator</h3>
+            <span class="cell-sub" style="align-self:center">Phase 1 · DOCX · layout-preserving</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info"><span>ℹ️</span><div>Translate <strong>Word, PowerPoint, Excel</strong> (.docx / .pptx / .xlsx — layout preserved), <strong>PDFs</strong> (incl. scanned), and <strong>images / photos</strong> (.png / .jpg) — PDFs and images are OCR'd to a translated Word doc. Results are saved to the Document Library, pending approval. Configure your Anthropic API key under <strong>Email Settings → AI</strong> if you haven't.</div></div>
+            <div class="form-grid">
+              <div class="form-group form-full"><label>1. Choose a document from the Document Library</label>
+                <select id="tr-source"><option value="">-- Select a file --</option></select></div>
+              <div class="form-group form-full"><label>…or upload a new file</label>
+                <input type="file" id="tr-upload" accept=".docx,.pptx,.xlsx,.pdf,.png,.jpg,.jpeg,.webp"></div>
+              <div class="form-group"><label>2. Target language</label><select id="tr-lang"></select></div>
+              <div class="form-group"><label>3. Output style</label>
+                <select id="tr-mode"><option value="target">Translated only (replace text)</option><option value="bilingual">Bilingual (original + translation)</option></select></div>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="btn btn-accent" id="tr-go" onclick="runTranslation()">🌐 Translate Document</button>
+              <span id="tr-status" class="cell-sub" style="align-self:center"></span>
+            </div>
+            <div id="tr-result" class="mt-2"></div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><h3>📑 Translation Jobs</h3>
+            <span id="tr-tmstats" class="cell-sub" style="align-self:center"></span></div>
+          <div class="card-body">
+            <div class="table-responsive"><table>
+              <thead><tr><th>Translated File</th><th>Language</th><th>By</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="tr-jobs"></tbody></table></div>
+          </div>
+        </div>
+
+        <div class="card mt-2">
+          <div class="card-header"><h3>📖 Terminology Glossary</h3>
+            <span class="cell-sub" style="align-self:center">English → target-language terms enforced in every translation. Duplicates are detected on upload.</span></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group"><label>Language</label><select id="term-lang"></select></div>
+              <div class="form-group"><label>Source term (English)</label><input id="term-src" placeholder="e.g. haul truck"></div>
+              <div class="form-group"><label>Required translation</label><input id="term-tgt" placeholder="approved target term"></div>
+              <div class="form-group"><label>Note (optional)</label><input id="term-note" placeholder="context / usage"></div>
+            </div>
+            <div class="flex gap-2 mt-1 flex-wrap"><button class="btn btn-accent btn-sm" onclick="addTerm()">+ Add / Update Term</button>
+              <button class="btn btn-outline btn-sm" onclick="termDownloadTemplate()" title="Download a CSV template you can fill in offline (one row per term)">⬇ Template</button>
+              <button class="btn btn-outline btn-sm" onclick="termDownloadGlossary()" title="Export the live glossary as CSV — honours the language filter on the right">⬇ Download Glossary</button>
+              <button class="btn btn-primary btn-sm" onclick="document.getElementById('term-import-file').click()" title="Upload a filled CSV — AI fills any blank Note column from the English source term">⬆ Upload CSV</button>
+              <input type="file" id="term-import-file" accept=".csv,text/csv" class="hidden" onchange="termUploadCsv(this)">
+              <select id="term-filter" onchange="loadTerms()" class="ml-auto"><option value="">All languages</option></select></div>
+            <div class="table-responsive mt-2"><table>
+              <thead><tr><th>Language</th><th>Source Term</th><th>Required Translation</th><th>Note</th><th></th></tr></thead>
+              <tbody id="term-tbody"></tbody></table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPORT / EXPORT -->
+      <div class="page" id="page-import">
+        <div class="card">
+          <div class="card-header">
+            <h3>📤 Import &amp; Export Data</h3>
+            <select id="import-type" onchange="resetImport()">
+              <option value="employee">Employees (TT_Employee)</option>
+              <option value="training">Training Courses (TT_Training)</option>
+              <option value="required">Training Requirements (TT_Required)</option>
+              <option value="complete">Training Records (TT_Complete)</option>
+            </select>
+          </div>
+          <div class="card-body">
+            <div class="import-steps">
+              <div class="import-step">
+                <div class="num">1</div>
+                <h4>Download Template</h4>
+                <p>Get the CSV template with the correct column headers and a sample row.</p>
+                <button class="btn btn-outline btn-sm mt-1" onclick="downloadTemplate()">⬇ Download Template</button>
+              </div>
+              <div class="import-step">
+                <div class="num">2</div>
+                <h4>Fill In Your Data</h4>
+                <p>Open in Excel or Google Sheets, enter your records, and save as CSV.</p>
+              </div>
+              <div class="import-step">
+                <div class="num">3</div>
+                <h4>Upload &amp; Import</h4>
+                <p>Drop your completed file below — we validate and load it automatically.</p>
+              </div>
+            </div>
+
+            <div class="dropzone" id="dropzone" onclick="document.getElementById('import-file').click()">
+              <div class="dz-icon">📁</div>
+              <h4>Drop your CSV file here, or click to browse</h4>
+              <p id="dz-filename">Accepted format: .csv</p>
+              <input type="file" id="import-file" accept=".csv" class="hidden" onchange="handleFilePick(event)">
+            </div>
+
+            <div class="flex gap-2 mt-2">
+              <button class="btn btn-primary" id="btn-do-import" onclick="doImport()" disabled>⬆ Import Data</button>
+              <button class="btn btn-outline" onclick="exportData()">⬇ Export Current Data</button>
+            </div>
+
+            <div class="import-result hidden" id="import-result"></div>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          <span>💡</span>
+          <div><strong>Smart import:</strong> Departments, job titles, locations, shifts and training types are created automatically if they don't exist. Employees are matched by <strong>File #</strong> and courses by <strong>Course #</strong> — existing records are updated, new ones are added.</div>
+        </div>
+      </div>
+
+      <!-- REPORT: EXPIRING -->
+      <div class="page" id="page-rpt-expiring">
+        <div class="card">
+          <div class="card-header">
+            <h3>⚠️ Training Expiring Soon</h3>
+            <div class="flex gap-2">
+              <select id="exp-days" onchange="loadExpiring()">
+                <option value="30">Next 30 Days</option>
+                <option value="60" selected>Next 60 Days</option>
+                <option value="90">Next 90 Days</option>
+                <option value="180">Next 180 Days</option>
+              </select>
+              <button class="btn btn-outline" onclick="window.print()">🖨 Print</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Employee</th><th>File #</th><th>Department</th><th>Course</th><th>Completed</th><th>Expires</th><th>Days Left</th></tr></thead>
+                <tbody id="exp-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT: EXPIRED -->
+      <div class="page" id="page-rpt-expired">
+        <div class="card">
+          <div class="card-header">
+            <h3>🔴 Expired Training</h3>
+            <button class="btn btn-outline" onclick="window.print()">🖨 Print</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Employee</th><th>File #</th><th>Department</th><th>Course</th><th>Completed</th><th>Expired</th><th>Days Overdue</th></tr></thead>
+                <tbody id="expired-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT: MISSING -->
+      <div class="page" id="page-rpt-missing">
+        <div class="card">
+          <div class="card-header">
+            <h3>❌ Missing Required Training</h3>
+            <button class="btn btn-outline" onclick="window.print()">🖨 Print</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Employee</th><th>File #</th><th>Department</th><th>Job Title</th><th>Missing Course</th><th>Course #</th></tr></thead>
+                <tbody id="missing-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT: HISTORY -->
+      <div class="page" id="page-rpt-history">
+        <div class="card">
+          <div class="card-header">
+            <h3>📈 Training History</h3>
+            <button class="btn btn-outline" onclick="window.print()">🖨 Print</button>
+          </div>
+          <div class="card-body">
+            <div class="toolbar">
+              <select id="hist-staff" onchange="loadHistory()"><option value="">All Employees</option></select>
+              <select id="hist-cert" onchange="loadHistory()"><option value="">All Courses</option></select>
+              <select id="hist-dept" onchange="loadHistory()"><option value="">All Departments</option></select>
+              <input type="date" id="hist-from" onchange="loadHistory()" title="From date">
+              <input type="date" id="hist-to" onchange="loadHistory()" title="To date">
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Employee</th><th>File #</th><th>Department</th><th>Course</th><th>Class</th><th>Completed</th><th>Expires</th><th>Score</th><th>Pass</th></tr></thead>
+                <tbody id="hist-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT: COMPLIANCE -->
+      <div class="page" id="page-rpt-compliance">
+        <div class="card">
+          <div class="card-header">
+            <h3>📑 Compliance Report</h3>
+            <button class="btn btn-outline" onclick="window.print()">🖨 Print</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Employee</th><th>File #</th><th>Department</th><th>Job</th><th>Course</th><th>Status</th><th>Last Completed</th><th>Expires</th></tr></thead>
+                <tbody id="comp-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT: WORKFORCE / GENDER -->
+      <div class="page" id="page-rpt-workforce">
+        <div class="stats-grid" id="wf-stats"></div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-header"><h3>👥 Workforce by Gender</h3></div>
+            <div class="card-body"><div class="chart-box"><canvas id="chart-gender"></canvas></div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3>🏭 Headcount by Site</h3></div>
+            <div class="card-body"><div class="chart-box"><canvas id="chart-site-gender"></canvas></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>📋 Gender Breakdown by Site</h3>
+            <button class="btn btn-outline btn-sm" onclick="window.print()">🖨 Print</button></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Site / Location</th><th>Male</th><th>Female</th><th>Other / N/A</th><th>Total</th></tr></thead>
+                <tbody id="wf-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN: SETUP LISTS -->
+      <div class="page" id="page-admin-lookup">
+        <div class="tabs">
+          <div class="tab active" onclick="switchLookupTab('dept',this)">Departments</div>
+          <div class="tab" onclick="switchLookupTab('jobs',this)">Job Titles</div>
+          <div class="tab" onclick="switchLookupTab('locations',this)">Locations</div>
+          <div class="tab" onclick="switchLookupTab('shifts',this)">Shifts</div>
+          <div class="tab" onclick="switchLookupTab('emptypes',this)">Emp Types</div>
+          <div class="tab" onclick="switchLookupTab('traintypes',this)">Train Types</div>
+          <div class="tab" onclick="switchLookupTab('classlocs',this)">Class Rooms</div>
+          <div class="tab" onclick="switchLookupTab('company',this)">🏢 Company</div>
+        </div>
+
+        <!-- Standard lookup list (hidden when company tab active) -->
+        <div class="card" id="lookup-list-card">
+          <div class="card-header">
+            <h3 id="lookup-title">Departments</h3>
+            <button class="btn btn-accent btn-sm" onclick="addLookupItem()">+ Add</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table><thead><tr><th>Name</th><th>Actions</th></tr></thead>
+              <tbody id="lookup-tbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company branding card (shown only when company tab active) -->
+        <div class="card hidden" id="lookup-company-card">
+          <div class="card-header"><h3>🏢 Company Branding</h3></div>
+          <div class="card-body">
+            <p class="cell-sub mb-2">The company name and logo are embedded in all generated documents (print, PDF, and Word files) and used by the AI to replace other company name references when transforming source documents.</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input id="company-name-input" placeholder="e.g. Acme Mining Pty Ltd">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Company Logo</label>
+              <div class="company-logo-zone" id="company-logo-zone"
+                   ondragover="event.preventDefault();this.classList.add('cs-drag-over')"
+                   ondragleave="this.classList.remove('cs-drag-over')"
+                   ondrop="companyLogoDrop(event);this.classList.remove('cs-drag-over')">
+                <input type="file" id="company-logo-file" accept="image/png,image/jpeg,image/gif,image/webp" style="display:none" onchange="companyLogoChosen(this)">
+                <div id="company-logo-preview-wrap" class="company-logo-preview-wrap">
+                  <img id="company-logo-preview" src="" alt="" style="display:none">
+                  <div id="company-logo-placeholder" class="company-logo-placeholder" onclick="document.getElementById('company-logo-file').click()">
+                    <div style="font-size:28px">🖼️</div>
+                    <div>Drop logo here or <u>click to upload</u></div>
+                    <div class="cell-sub">PNG · JPG · GIF · WEBP — max 2 MB · recommended 300×100 px</div>
+                  </div>
+                </div>
+                <div id="company-logo-actions" class="company-logo-actions hidden">
+                  <button class="btn btn-outline btn-sm" onclick="document.getElementById('company-logo-file').click()">🔄 Replace</button>
+                  <button class="btn btn-outline btn-sm" onclick="clearCompanyLogo()">✕ Remove</button>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-2 mt-2">
+              <button class="btn btn-accent" onclick="saveCompanySettings()">💾 Save Company Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN: USERS -->
+      <div class="page" id="page-admin-users">
+        <div class="card">
+          <div class="card-header">
+            <h3>User Accounts</h3>
+            <button class="btn btn-accent" onclick="openUserModal()">+ Add User</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Username</th><th>Full Name</th><th>Role</th><th>Department</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="users-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ========== MODALS ========== -->
+
+<!-- Employee Modal -->
+<div class="modal-overlay hidden" id="staff-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="staff-modal-title">Add Employee</h3>
+      <button class="modal-close" onclick="closeModal('staff-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('staff-tab-info',this)">General Info</div>
+        <div class="tab" onclick="switchTab('staff-tab-contact',this)">Contact</div>
+        <div class="tab staff-edit-only hidden" onclick="switchTab('staff-tab-roles',this)">Roles &amp; Career</div>
+        <div class="tab staff-edit-only hidden" onclick="switchTab('staff-tab-training',this)">Training History</div>
+        <div class="tab staff-edit-only hidden" onclick="switchTab('staff-tab-docs',this)">Documents</div>
+        <div class="tab staff-edit-only hidden" onclick="switchTab('staff-tab-notes',this)">Notes</div>
+      </div>
+      <div id="staff-tab-info" class="tab-content">
+        <div class="form-grid">
+          <div class="form-group"><label>Last Name *</label><input id="s-LastName" required></div>
+          <div class="form-group"><label>First Name *</label><input id="s-FirstName" required></div>
+          <div class="form-group"><label>File / Employee #</label><input id="s-FileNum"></div>
+          <div class="form-group"><label>Status</label><select id="s-Status"><option>Active</option><option>Inactive</option><option>Terminated</option><option>On Leave</option></select></div>
+          <div class="form-group"><label>Gender</label><select id="s-Gender"><option value="">-- Select --</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+          <div class="form-group"><label>Department</label><select id="s-DeptID"></select></div>
+          <div class="form-group"><label>Job Title</label><select id="s-JobID"></select></div>
+          <div class="form-group"><label>Location</label><select id="s-LocID"></select></div>
+          <div class="form-group"><label>Shift</label><select id="s-ShiftID"></select></div>
+          <div class="form-group"><label>Employee Type</label><select id="s-empTypeID"></select></div>
+          <div class="form-group"><label>Supervisor</label><input id="s-Supervisor"></div>
+          <div class="form-group"><label>Start Date</label><input type="date" id="s-StartDate"></div>
+          <div class="form-group"><label>End Date</label><input type="date" id="s-EndDate"></div>
+          <div class="form-group form-full"><label>Notes</label><textarea id="s-Note" rows="2"></textarea></div>
+        </div>
+      </div>
+      <div id="staff-tab-contact" class="tab-content hidden">
+        <div class="form-grid">
+          <div class="form-group"><label>Email</label><input type="email" id="s-Email"></div>
+          <div class="form-group"><label>Extension</label><input id="s-extension"></div>
+          <div class="form-group"><label>Home Phone</label><input id="s-HomePhone"></div>
+          <div class="form-group"><label>Cell Phone</label><input id="s-CellPhone"></div>
+          <div class="form-group form-full"><label>Address</label><input id="s-Address"></div>
+        </div>
+      </div>
+      <div id="staff-tab-training" class="tab-content hidden">
+        <div id="staff-training-list"></div>
+      </div>
+      <div id="staff-tab-roles" class="tab-content hidden">
+        <div class="alert alert-info"><span>ℹ️</span><div>Assign one or more job roles. The courses required for each role automatically flow into this employee's training profile below. Set a role as <strong>Primary</strong> for their main title.</div></div>
+        <div class="flex gap-2 mb-2">
+          <select id="role-add-job" style="flex:1;padding:9px 12px;border:1.5px solid var(--border-strong);border-radius:8px;"><option value="">-- Select a job title --</option></select>
+          <label class="flex items-center gap-2" style="font-size:13px;white-space:nowrap"><input type="checkbox" id="role-add-primary"> Primary</label>
+          <button class="btn btn-primary" onclick="addRole()">+ Assign Role</button>
+        </div>
+        <div id="staff-roles-list"></div>
+        <h4 style="font-size:13.5px;font-weight:700;margin:18px 0 8px">📚 Training required by these roles</h4>
+        <div id="staff-role-courses"></div>
+        <h4 style="font-size:13.5px;font-weight:700;margin:18px 0 8px">🕘 Role / Career History</h4>
+        <div id="staff-role-history"></div>
+      </div>
+      <div id="staff-tab-docs" class="tab-content hidden">
+        <div id="staff-docs"></div>
+      </div>
+      <div id="staff-tab-notes" class="tab-content hidden">
+        <div class="flex gap-2 mb-2">
+          <input id="new-note-text" placeholder="Add a note..." style="flex:1;padding:8px 12px;border:1.5px solid #dee2e6;border-radius:6px;font-size:13.5px;">
+          <button class="btn btn-primary" onclick="addStaffNote()">Add Note</button>
+        </div>
+        <div id="staff-notes-list"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('staff-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveStaff()">Save Employee</button>
+    </div>
+  </div>
+</div>
+
+<!-- Course Modal -->
+<div class="modal-overlay hidden" id="cert-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="cert-modal-title">Add Training Course</h3>
+      <button class="modal-close" onclick="closeModal('cert-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group form-full"><label>Course Name *</label><input id="c-CertName" required></div>
+        <div class="form-group form-full"><label>Parent Course (leave blank for a main course)</label><select id="c-ParentCertID"><option value="">— None (this is a main course) —</option></select></div>
+        <div class="form-group"><label>Course Number</label><input id="c-CertNum"></div>
+        <div class="form-group"><label>Course Type</label><input id="c-CertType" placeholder="e.g. Safety, HR, Technical"></div>
+        <div class="form-group"><label>Training Type</label><select id="c-TrainTypeID"></select></div>
+        <div class="form-group"><label>Status</label><select id="c-Status"><option>Active</option><option>Inactive</option></select></div>
+        <div class="form-group"><label>Training Hours</label><input type="number" step="0.5" id="c-TrHours" min="0"></div>
+        <div class="form-group"><label>Expiry Period (months)</label><input type="number" id="c-Months" min="0" placeholder="0 = no expiry"></div>
+        <div class="form-group"><label>Current Revision</label><input id="c-CurrentRev"></div>
+        <div class="form-group"><label>Release Date</label><input type="date" id="c-ReleaseDate"></div>
+        <div class="form-group"><label>Has Exam?</label><select id="c-Exam"><option value="0">No</option><option value="1">Yes</option></select></div>
+        <div class="form-group"><label>Standard Based?</label><select id="c-StandardBased"><option value="0">No</option><option value="1">Yes</option></select></div>
+        <div class="form-group"><label>Document Link</label><input id="c-LinkDoc" placeholder="URL or file path"></div>
+        <div class="form-group form-full"><label class="ai-desc-label">Description <button type="button" class="btn-ai-desc" onclick="aiDraftDesc('c-TrainDesc','course',()=>({name:val('c-CertName')}))">✨ AI Draft</button></label><textarea id="c-TrainDesc" rows="3"></textarea></div>
+        <div class="form-group form-full"><label>Alternate Text</label><input id="c-AltText"></div>
+      </div>
+      <div id="cert-docs-section" class="mt-3 hidden">
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:10px">📎 Course Materials</h4>
+        <div id="cert-docs"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('cert-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveCert()">Save Course</button>
+    </div>
+  </div>
+</div>
+
+<!-- Class Modal -->
+<div class="modal-overlay hidden" id="class-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="class-modal-title">Schedule a Class</h3>
+      <button class="modal-close" onclick="closeModal('class-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Course *</label><select id="cl-CertID" onchange="filterTrainersForCourse()"><option value="">-- Select --</option></select></div>
+        <div class="form-group"><label>Class Name</label><input id="cl-ClassName"></div>
+        <div class="form-group"><label>Class Number</label><input id="cl-ClassNum"></div>
+        <div class="form-group"><label>Trainer</label><select id="cl-TrainerID"><option value="">-- Select --</option></select></div>
+        <div class="form-group"><label>Max Seats (blank = room capacity)</label><input id="cl-MaxSeats" type="number" min="1"></div>
+        <div class="form-group"><label>Instructor / Notes (free text)</label><input id="cl-OfferedBy"></div>
+        <div class="form-group"><label>Date</label><input type="date" id="cl-ClassDate"></div>
+        <div class="form-group"><label>Start Time</label><input type="time" id="cl-TimeStart"></div>
+        <div class="form-group"><label>End Time</label><input type="time" id="cl-TimeEnd"></div>
+        <div class="form-group"><label>Classroom</label><select id="cl-ClassLocID"><option value="">-- Select --</option></select></div>
+        <div class="form-group"><label>Location / Notes</label><input id="cl-ClassLocation"></div>
+        <div class="form-group"><label>Estimated Cost ($)</label><input type="number" step="0.01" id="cl-EstCost"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('class-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveClass()">Save Class</button>
+    </div>
+  </div>
+</div>
+
+<!-- Training Record Modal -->
+<div class="modal-overlay hidden" id="record-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="rec-modal-title">Add Training Record</h3>
+      <button class="modal-close" onclick="closeModal('record-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Employee *</label><select id="r-StaffID"><option value="">-- Select --</option></select></div>
+        <div class="form-group"><label>Course *</label><select id="r-CertID" onchange="recalcExp()"><option value="">-- Select --</option></select></div>
+        <div class="form-group"><label>Class (optional)</label><select id="r-ClassID"><option value="">-- None --</option></select></div>
+        <div class="form-group"><label>Status</label><select id="r-State"><option>Completed</option><option>In Progress</option><option>Registered</option><option>Waived</option></select></div>
+        <div class="form-group"><label>Completed Date</label><input type="date" id="r-Complete" onchange="recalcExp()"></div>
+        <div class="form-group"><label>Expiration Date</label><input type="date" id="r-Exp"></div>
+        <div class="form-group"><label>Score (%)</label><input type="number" id="r-Score" min="0" max="100"></div>
+        <div class="form-group"><label>Pass?</label><select id="r-Pass"><option value="">--</option><option value="1">Yes</option><option value="0">No</option></select></div>
+        <div class="form-group"><label>Revision</label><input id="r-Rev"></div>
+        <div class="form-group"><label>Due By</label><input type="date" id="r-DueBy"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('record-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveRecord()">Save Record</button>
+    </div>
+  </div>
+</div>
+
+<!-- Requirement Modal -->
+<div class="modal-overlay hidden" id="rqd-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Training Requirement</h3>
+      <button class="modal-close" onclick="closeModal('rqd-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alert alert-info">Assign a required course to a Job Title, Department, or specific Employee.</div>
+      <div class="form-grid">
+        <div class="form-group form-full"><label>Course *</label><select id="rq-CertID"><option value="">-- Select Course --</option></select></div>
+        <div class="form-group"><label>Required for Job Title</label><select id="rq-JobID"><option value="">-- None --</option></select></div>
+        <div class="form-group"><label>Required for Department</label><select id="rq-DeptID"><option value="">-- None --</option></select></div>
+        <div class="form-group"><label>Required for Employee</label><select id="rq-StaffID"><option value="">-- None --</option></select></div>
+        <div class="form-group"><label>Due By Date</label><input type="date" id="rq-DueByDate"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('rqd-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveRqd()">Save Requirement</button>
+    </div>
+  </div>
+</div>
+
+<!-- User Modal -->
+<div class="modal-overlay hidden" id="user-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="user-modal-title">Add User Account</h3>
+      <button class="modal-close" onclick="closeModal('user-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Username *</label><input id="u-UserName"></div>
+        <div class="form-group"><label>Password</label><input type="password" id="u-Password" placeholder="Leave blank to keep current"></div>
+        <div class="form-group"><label>Full Name</label><input id="u-USER"></div>
+        <div class="form-group"><label>Linked Employee</label><select id="u-staffID"><option value="">-- None --</option></select></div>
+        <div class="form-group"><label>Status</label><select id="u-UserStatus"><option>Active</option><option>Inactive</option></select></div>
+        <div class="form-group"><label>Department</label><select id="u-DeptID"><option value="">-- None --</option></select></div>
+        <div class="form-group"><label>Location</label><select id="u-LocID"><option value="">-- None --</option></select></div>
+      </div>
+      <div class="mt-2"><strong>Access Level:</strong></div>
+      <div class="flex gap-3 mt-1">
+        <label><input type="checkbox" id="u-Admin" onchange="onAdminToggle()"> Administrator</label>
+        <label><input type="checkbox" id="u-Standard"> Standard User</label>
+        <label><input type="checkbox" id="u-Restricted"> Restricted</label>
+        <label><input type="checkbox" id="u-ExamOnly"> Exam Only</label>
+        <label><input type="checkbox" id="u-ReadPrint"> Read/Print Only</label>
+      </div>
+      <div id="u-pageaccess-wrap" class="mt-3">
+        <div class="flex items-center gap-2 mb-1">
+          <strong>📑 Page Access</strong>
+          <span class="cell-sub">Choose which pages this user can see</span>
+          <div class="ml-auto flex gap-2">
+            <button type="button" class="btn btn-ghost btn-sm" onclick="setAllPageAccess(true)">Select all</button>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="setAllPageAccess(false)">Clear</button>
+          </div>
+        </div>
+        <div id="u-Admin-note" class="alert alert-info hidden" style="margin-bottom:8px"><span>👑</span><div>Administrators can see every page — page access is managed automatically.</div></div>
+        <div id="u-pageaccess" class="pageaccess-grid"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('user-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveUser()">Save User</button>
+    </div>
+  </div>
+</div>
+
+<!-- Form Builder Modal -->
+<div class="modal-overlay hidden" id="form-builder-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="fb-title">New Assessment Form</h3>
+      <button class="modal-close" onclick="closeModal('form-builder-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <div class="doc-import">
+            <div><strong>📄 Build from a document</strong><div class="cell-sub">Upload a Word .docx form (e.g. a TAR/assessment record) and we'll turn its headings, fields and tables into editable form fields.</div></div>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('fb-import-file').click()">⬆ Upload Template Document</button>
+            <input type="file" id="fb-import-file" accept=".docx" class="hidden" onchange="importDocToBuilder(event)">
+          </div>
+        </div>
+        <div class="form-group form-full"><label>Form Name *</label><input id="fb-Name" placeholder="e.g. Forklift Field Competency Assessment"></div>
+        <div class="form-group"><label>Awards Qualification (on pass)</label><select id="fb-CertID"><option value="">-- None --</option></select></div>
+        <!-- Pass Mark is an EXAM-only concept — assessment forms aren't scored to a pass %, so it's hidden here.
+             The hidden input keeps a harmless default for the save payload. -->
+        <input id="fb-PassMark" type="hidden" value="80">
+        <div class="form-group form-full">
+          <label>Training Material Links / Folder Locations (shown on the form)</label>
+          <div id="fb-material-list" class="material-list"></div>
+          <div class="flex gap-2 mt-1">
+            <button class="btn btn-outline btn-sm" onclick="addMaterialLink()">+ Add Link / Location</button>
+            <span class="cell-sub">SharePoint, shared drive (\\server\share\folder), document or video URL</span>
+          </div>
+        </div>
+        <div class="form-group form-full"><label class="ai-desc-label">Description / Instructions <button type="button" class="btn-ai-desc" onclick="aiDraftDesc('fb-Description','form',()=>({name:val('fb-Name')}))">✨ AI Draft</button></label><textarea id="fb-Description" rows="2"></textarea></div>
+      </div>
+      <div class="flex items-center mt-2 mb-1">
+        <h4 style="font-size:14px;font-weight:700">Form Fields</h4>
+        <div class="ml-auto flex gap-2" style="flex-wrap:wrap">
+          <button class="btn btn-outline btn-sm" onclick="addField('section')">+ Section</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('competency')">+ Competency (scored)</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('yesno')">+ Yes/No</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('rating')">+ Rating</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('text')">+ Text</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('textarea')">+ Notes</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('number')">+ Number</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('date')">+ Date</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('time')">+ Time</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('select')">+ Dropdown</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('radio')">+ Choice</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('checkbox')">+ Checkboxes</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('email')">+ Email</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('phone')">+ Phone</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('instructions')">+ Instructions</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('photo')">+ Photo</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('materiallink')">+ Material Link</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('grid')">+ Table / Grid</button>
+          <button class="btn btn-outline btn-sm" onclick="addField('signature')">+ Signature</button>
+        </div>
+      </div>
+      <div class="cs-trans-bar" style="margin-bottom:12px">
+        <span class="cs-trans-label">🌐 Translate</span>
+        <select id="fb-trans-lang"><option value="">— select language —</option>
+          <option value="Spanish">Spanish — Español</option><option value="French">French — Français</option>
+          <option value="Portuguese">Portuguese — Português</option><option value="Mandarin Chinese">Mandarin Chinese — 中文</option>
+          <option value="Arabic">Arabic — العربية</option><option value="Indonesian">Indonesian — Bahasa Indonesia</option>
+          <option value="Malay">Malay — Bahasa Melayu</option><option value="Thai">Thai — ภาษาไทย</option>
+          <option value="Vietnamese">Vietnamese — Tiếng Việt</option><option value="Tagalog">Tagalog — Filipino</option>
+          <option value="Hindi">Hindi — हिंदी</option><option value="Japanese">Japanese — 日本語</option>
+          <option value="Korean">Korean — 한국어</option><option value="German">German — Deutsch</option>
+          <option value="Italian">Italian — Italiano</option><option value="Russian">Russian — Русский</option>
+          <option value="Polish">Polish — Polski</option><option value="Afrikaans">Afrikaans — Afrikaans</option>
+          <option value="Zulu">Zulu — isiZulu</option><option value="Swahili">Swahili — Kiswahili</option>
+        </select>
+        <div class="cs-trans-layout">
+          <button type="button" class="btn btn-sm" id="fb-tbl-above" onclick="fbSetTransLayout('above')">⬆ Above</button>
+          <button type="button" class="btn btn-sm active" id="fb-tbl-below" onclick="fbSetTransLayout('below')">⬇ Below</button>
+          <button type="button" class="btn btn-sm" id="fb-tbl-side" onclick="fbSetTransLayout('side')">⇔ Side</button>
+          <span class="cs-trans-order" id="fb-trans-order" style="display:none;gap:4px;margin-left:6px">
+            <span class="cell-sub" style="align-self:center">order:</span>
+            <button type="button" class="btn btn-sm active" id="fb-ord-en" onclick="fbSetTransSideOrder('en-first')">English first</button>
+            <button type="button" class="btn btn-sm" id="fb-ord-lang" onclick="fbSetTransSideOrder('lang-first')">Translation first</button>
+          </span>
+        </div>
+        <button type="button" class="btn btn-accent btn-sm" id="fb-trans-all-btn" onclick="fbTranslateAll()">🌐 Translate All</button>
+      </div>
+      <div id="fb-fields" class="fb-fields"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('form-builder-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveForm()">Save Form</button>
+    </div>
+  </div>
+</div>
+
+<!-- Submission View Modal -->
+<div class="modal-overlay hidden" id="submission-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>📄 Assessment Record</h3>
+      <button class="modal-close" onclick="closeModal('submission-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="submission-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('submission-modal')">Close</button>
+      <button class="btn btn-primary" onclick="if(window.subViewId) window.open('/api/forms/submissions/'+window.subViewId+'/export','_blank')" title="Download this completed form as a Word document">⬇ Word</button>
+      <button class="btn btn-outline" onclick="if(window.subViewId) openSaveFormDest('submission', window.subViewId)" title="Save this completed form to a destination (Document Library, Training Material…)">💾 Save to…</button>
+      <button class="btn btn-accent" onclick="printSubmission()">🖨 Print</button>
+    </div>
+  </div>
+</div>
+
+<!-- Shift Patterns Modal -->
+<!-- Translation Review Modal -->
+<div class="modal-overlay hidden" id="review-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="review-title">🔍 Review Translation</h3>
+      <button class="modal-close" onclick="closeModal('review-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alert alert-info"><span>ℹ️</span><div>Check each segment. Edit any translation on the right — your corrections update the document and are saved to Translation Memory so the same source always translates this way.</div></div>
+      <div class="table-responsive" style="max-height:55vh;overflow:auto">
+        <table class="review-table">
+          <thead><tr><th style="width:45%">Source</th><th style="width:55%">Translation (editable)</th></tr></thead>
+          <tbody id="review-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span id="review-status" class="cell-sub" style="margin-right:auto"></span>
+      <button class="btn btn-outline" onclick="closeModal('review-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveReview(false)">💾 Save Corrections</button>
+      <button class="btn btn-success admin-only" onclick="saveReview(true)">✓ Save &amp; Approve</button>
+    </div>
+  </div>
+</div>
+
+<!-- Workflow Assignment Modal -->
+<div class="modal-overlay hidden" id="workflow-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="workflow-modal-title">New Workflow</h3>
+      <button class="modal-close" onclick="closeModal('workflow-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group form-full"><label>Workflow Name *</label><input id="wf-Name" placeholder="e.g. Notify supervisor on exam fail"></div>
+        <div class="form-group form-full"><label>Trigger Event *</label><select id="wf-TriggerEvent" onchange="onWorkflowEventChange()"></select>
+          <div class="cell-sub mt-1" id="wf-event-desc"></div></div>
+        <div class="form-group form-full"><label>Send To — email address(es)</label><input id="wf-Recipients" placeholder="manager@company.com, hr@company.com"><div class="cell-sub mt-1">Comma-separated. Leave blank to use only the options below.</div></div>
+        <div class="form-group form-full"><label>CC (optional)</label><input id="wf-CcRecipients" placeholder="copy@company.com"></div>
+      </div>
+      <div class="mt-2"><strong>Redirect / also notify:</strong></div>
+      <div class="flex gap-3 mt-1">
+        <label><input type="checkbox" id="wf-NotifySupervisor"> 👔 The employee's supervisor</label>
+        <label><input type="checkbox" id="wf-NotifyEmployee"> 👤 The employee</label>
+      </div>
+      <div class="form-grid mt-2">
+        <div class="form-group form-full"><label>Email Subject <span class="cell-sub">— use {{Employee}}, {{Course}}, {{Score}} etc.</span></label><input id="wf-SubjectTemplate" placeholder="Training completed: {{Employee}} — {{Course}}"></div>
+        <div class="form-group form-full"><label>Note added to email (optional)</label><textarea id="wf-Note" rows="2" placeholder="Any extra message included in the notification..."></textarea></div>
+        <div class="form-group"><label>Status</label><select id="wf-Active"><option value="1">Active</option><option value="0">Disabled</option></select></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('workflow-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveWorkflow()">Save Workflow</button>
+    </div>
+  </div>
+</div>
+
+<!-- Shift Types Modal -->
+<div class="modal-overlay hidden" id="shifttypes-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🎨 Shift Types</h3>
+      <button class="modal-close" onclick="closeModal('shifttypes-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="cell-sub mb-2">Define the shifts your site runs — day, night, afternoon, late, or anything else. Each can have its own colour and default hours. These appear in the roster legend, the Add Shift form and shift patterns.</p>
+      <div id="shifttypes-list" class="mb-2"></div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:10px" id="shifttype-form-title">Add Shift Type</h4>
+      <div class="form-grid">
+        <div class="form-group"><label>Shift Name *</label><input id="st-Label" placeholder="e.g. Afternoon Shift"></div>
+        <div class="form-group"><label>Colour</label><input id="st-Color" type="color" value="#F58220"></div>
+        <div class="form-group"><label>Default Start</label><input id="st-Start" type="time"></div>
+        <div class="form-group"><label>Default End</label><input id="st-End" type="time"></div>
+        <div class="form-group form-full"><label class="flex items-center gap-2" style="font-size:13px"><input type="checkbox" id="st-IsOff"> This is an "Off" day (person counts as not on duty)</label></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="resetShiftTypeForm()">Clear</button>
+      <button class="btn btn-accent" onclick="saveShiftType()">Save Shift Type</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="patterns-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>⚙ Shift Patterns</h3>
+      <button class="modal-close" onclick="closeModal('patterns-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="patterns-list" class="mb-2"></div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:10px" id="pattern-form-title">New Pattern</h4>
+      <div class="form-grid">
+        <div class="form-group"><label>Pattern Name *</label><input id="pat-Name" placeholder="e.g. 4 on 4 off"></div>
+        <div class="form-group"><label>Cycle Length (days)</label><input id="pat-Cycle" type="number" min="1" max="56" value="7" onchange="renderPatternDays()"></div>
+        <div class="form-group"><label>Colour</label><input id="pat-Color" type="color" value="#4f46e5"></div>
+        <div class="form-group form-full"><label class="ai-desc-label">Description <button type="button" class="btn-ai-desc" onclick="aiDraftDesc('pat-Description','pattern',()=>({name:val('pat-Name'),cycle:val('pat-Cycle')}))">✨ AI Draft</button></label><input id="pat-Description"></div>
+      </div>
+      <div class="mt-2">
+        <div class="pat-fill-row">
+          <label style="font-weight:600;font-size:12px;color:var(--text-soft)">Shift / Panel:</label>
+          <select id="pat-fill-shift" style="flex:1;min-width:0">
+            <option value="">— select to fill all days —</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="patFillAllDays()">Fill All Days</button>
+        </div>
+        <label style="font-weight:600;font-size:12px;color:var(--text-soft);display:block;margin-top:10px">Define each day of the cycle:</label>
+        <div id="pattern-days" class="pattern-days mt-1"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="resetPatternForm()">Clear</button>
+      <button class="btn btn-accent" onclick="savePattern()">Save Pattern</button>
+    </div>
+  </div>
+</div>
+
+<!-- Assign Pattern Modal -->
+<div class="modal-overlay hidden" id="assign-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📅 Assign Shift Pattern</h3>
+      <button class="modal-close" onclick="closeModal('assign-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Who</label><select id="asg-PersonType" onchange="fillAssignPeople()"><option value="employee">Employee</option><option value="trainer">Trainer</option></select></div>
+        <div class="form-group"><label>Person *</label><select id="asg-PersonID"></select></div>
+        <div class="form-group form-full"><label>Pattern *</label><select id="asg-PatternID"></select></div>
+        <div class="form-group"><label>&nbsp;</label><label class="flex items-center gap-2" style="font-size:13px"><input type="checkbox" id="asg-Replace" checked> Replace existing shifts in range</label></div>
+        <div class="form-group form-full"><label class="flex items-center gap-2" style="font-size:13px;color:#dc2626;font-weight:600"><input type="checkbox" id="asg-ClearAll"> ⚠ Clear ALL existing roster entries for this person first (use this if a previous assignment left stale shifts behind the new From date)</label></div>
+        <details class="form-group form-full" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:8px"><summary style="font-size:13px;font-weight:600;cursor:pointer;color:#475569">Advanced — Cycle phase anchor</summary>
+          <div style="margin-top:8px">
+            <label style="font-size:12px;color:#64748b">Cycle Day 1 lands on (defaults to "From" — only change if you want to phase-shift the pattern)</label>
+            <input id="asg-Anchor" type="date">
+          </div>
+        </details>
+        <div class="form-group"><label>From *</label><input id="asg-From" type="date"></div>
+        <div class="form-group">
+          <label>To <span class="cell-sub" style="font-weight:400">(optional — leave blank for indefinite)</span></label>
+          <input id="asg-To" type="date">
+          <label class="flex items-center gap-2" style="font-size:12px;margin-top:4px"><input type="checkbox" id="asg-NoEnd" onchange="document.getElementById('asg-To').disabled=this.checked; if(this.checked) document.getElementById('asg-To').value='';"> Continue indefinitely (5-year horizon — enter a To date later to truncate)</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('assign-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="doAssignPattern()">Generate Roster</button>
+    </div>
+  </div>
+</div>
+
+<!-- Roster Entry Modal -->
+<div class="modal-overlay hidden" id="roster-entry-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="rentry-title">Add Shift</h3>
+      <button class="modal-close" onclick="closeModal('roster-entry-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Who</label><select id="re-PersonType" onchange="fillEntryPeople()"><option value="employee">Employee</option><option value="trainer">Trainer</option></select></div>
+        <div class="form-group"><label>Person *</label><select id="re-PersonID"></select></div>
+        <div class="form-group"><label>Date *</label><input id="re-Date" type="date"></div>
+        <div class="form-group"><label>Shift Type</label><select id="re-Shift" onchange="onEntryShiftChange()"><option value="Off">Off</option></select></div>
+        <div class="form-group"><label>Start</label><input id="re-Start" type="time"></div>
+        <div class="form-group"><label>End</label><input id="re-End" type="time"></div>
+        <div class="form-group form-full"><label>Note</label><input id="re-Note"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('roster-entry-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveRosterEntry()">Save Shift</button>
+    </div>
+  </div>
+</div>
+
+<!-- Trainer Modal -->
+<div class="modal-overlay hidden" id="trainer-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="trainer-modal-title">Add Trainer</h3>
+      <button class="modal-close" onclick="closeModal('trainer-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>First Name *</label><input id="tr-FirstName"></div>
+        <div class="form-group"><label>Last Name *</label><input id="tr-LastName"></div>
+        <div class="form-group"><label>Type</label><select id="tr-TrainerType" onchange="toggleTrainerType()"><option>Internal</option><option>External</option></select></div>
+        <div class="form-group" id="tr-staff-wrap"><label>Linked Employee</label><select id="tr-StaffID"><option value="">-- None --</option></select></div>
+        <div class="form-group" id="tr-company-wrap"><label>Company</label><input id="tr-Company"></div>
+        <div class="form-group"><label>Email</label><input id="tr-Email" type="email"></div>
+        <div class="form-group"><label>Phone</label><input id="tr-Phone"></div>
+        <div class="form-group"><label>Hourly Rate ($)</label><input id="tr-HourlyRate" type="number" step="0.01"></div>
+        <div class="form-group"><label>Daily Rate ($)</label><input id="tr-DailyRate" type="number" step="0.01"></div>
+        <div class="form-group"><label>Status</label><select id="tr-Status"><option>Active</option><option>Inactive</option></select></div>
+        <div class="form-group form-full"><label>Notes</label><textarea id="tr-Notes" rows="2"></textarea></div>
+      </div>
+      <div class="mt-2">
+        <label style="font-weight:600;font-size:12px;color:var(--text-soft)">Qualified to teach these courses:</label>
+        <div id="tr-courses" class="course-checks mt-1"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('trainer-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveTrainer()">Save Trainer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Exam Builder Modal -->
+<!-- (Old exam modal removed — exam creation now lives on the dedicated Exam Builder page) -->
+
+<!-- Take Exam Modal -->
+<div class="modal-overlay hidden" id="take-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="take-title">Take Exam</h3>
+      <button class="modal-close" onclick="closeModal('take-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="take-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('take-modal')">Cancel</button>
+      <button class="btn btn-accent" id="take-submit-btn" onclick="submitExam()">Submit Exam</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sign-off Modal -->
+<div class="modal-overlay hidden" id="sign-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>✍️ Digital Sign-Off</h3>
+      <button class="modal-close" onclick="closeModal('sign-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="alert alert-info"><span>🔒</span><div>Re-enter your password to electronically sign this training record. Your name, the meaning, and a timestamp will be permanently recorded.</div></div>
+      <div class="form-group mb-1"><label>Meaning of Signature</label>
+        <select id="sign-meaning"><option>Approved</option><option>Reviewed</option><option>Verified Competent</option><option>Witnessed</option></select></div>
+      <div class="form-group"><label>Your Password</label><input type="password" id="sign-password"></div>
+      <div id="sign-error" class="mt-1"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('sign-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="submitSign()">Sign Record</button>
+    </div>
+  </div>
+</div>
+
+<!-- Exam Certificate Modal -->
+<div class="modal-overlay hidden" id="certificate-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>🏆 Certificate of Achievement</h3>
+      <button class="modal-close" onclick="closeModal('certificate-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="certificate-body" style="padding:0"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('certificate-modal')">Close</button>
+      <button class="btn btn-accent" onclick="printCertificate()">🖨 Print / Save PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Transcript Modal -->
+<div class="modal-overlay hidden" id="transcript-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>📜 Training Transcript</h3>
+      <button class="modal-close" onclick="closeModal('transcript-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="transcript-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('transcript-modal')">Close</button>
+      <button class="btn btn-accent" onclick="printTranscript()">🖨 Print Transcript</button>
+    </div>
+  </div>
+</div>
+
+<!-- Roster Modal -->
+<div class="modal-overlay hidden" id="roster-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3 id="roster-title">Class Roster</h3>
+      <button class="modal-close" onclick="closeModal('roster-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="roster-capacity" class="mb-2"></div>
+      <div class="flex gap-2 mb-2">
+        <select id="roster-add-staff" style="flex:1;padding:9px 12px;border:1.5px solid var(--border-strong);border-radius:8px;"></select>
+        <button class="btn btn-primary" onclick="addToRoster()">+ Book Employee</button>
+      </div>
+      <div class="table-responsive">
+        <table><thead><tr><th>#</th><th>Name</th><th>File #</th><th>Department</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="roster-tbody"></tbody></table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('roster-modal')">Close</button>
+      <button class="btn btn-outline" onclick="printSignInSheet()">🖨 Sign-In Sheet</button>
+    </div>
+  </div>
+</div>
+
+<!-- Competency Framework Modal -->
+<div class="modal-overlay hidden" id="comp-fw-modal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="comp-fw-modal-title">Add Framework</h3><button class="modal-close" onclick="closeModal('comp-fw-modal')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="comp-fw-id">
+      <div class="form-group"><label>Name *</label><input id="comp-fw-name" placeholder="e.g. Mining Operations Competencies"></div>
+      <div class="form-group"><label class="ai-desc-label">Description <button type="button" class="btn-ai-desc" onclick="aiDraftDesc('comp-fw-desc','framework',()=>({name:val('comp-fw-name')}))">✨ AI Draft</button></label><textarea id="comp-fw-desc" rows="3" placeholder="Purpose and scope of this framework"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('comp-fw-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveCompFramework()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Competency Modal -->
+<div class="modal-overlay hidden" id="comp-modal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="comp-modal-title">Add Competency</h3><button class="modal-close" onclick="closeModal('comp-modal')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="comp-id">
+      <div class="form-group"><label>Framework</label><select id="comp-framework-sel"></select></div>
+      <div class="form-group"><label>Category</label><input id="comp-category" placeholder="e.g. Safety, Equipment, Leadership"></div>
+      <div class="form-group"><label>Name *</label><input id="comp-name" placeholder="e.g. Haul Truck Operation"></div>
+      <div class="form-group"><label class="ai-desc-label">Description <button type="button" class="btn-ai-desc" onclick="aiDraftDesc('comp-desc','competency',()=>({name:val('comp-name'),category:val('comp-category')}))">✨ AI Draft</button></label><textarea id="comp-desc" rows="3" placeholder="What this competency covers"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('comp-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveCompetency()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Competency Requirement Modal -->
+<div class="modal-overlay hidden" id="comp-req-modal">
+  <div class="modal">
+    <div class="modal-header"><h3>Link Competency to Job / Department</h3><button class="modal-close" onclick="closeModal('comp-req-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="alert alert-info"><span>ℹ️</span><div>Link a competency to a job title or department — employees in that group will appear in the gap analysis.</div></div>
+      <div class="form-group"><label>Competency *</label><select id="comp-req-comp"></select></div>
+      <div class="form-group"><label>Job Title (optional)</label><select id="comp-req-job"><option value="">— Any —</option></select></div>
+      <div class="form-group"><label>Department (optional)</label><select id="comp-req-dept"><option value="">— Any —</option></select></div>
+      <div class="form-group"><label>Required Level *</label>
+        <select id="comp-req-level">
+          <option value="1">1 — Awareness</option>
+          <option value="2">2 — Basic (needs supervision)</option>
+          <option value="3" selected>3 — Competent (independent, meets standard)</option>
+          <option value="4">4 — Advanced (optimises performance)</option>
+          <option value="5">5 — Expert (coaches others)</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('comp-req-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveCompReq()">Link</button>
+    </div>
+  </div>
+</div>
+
+<!-- Competency Assess Modal (from gap analysis) -->
+<div class="modal-overlay hidden" id="comp-assess-modal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="comp-assess-title">Record Competency</h3><button class="modal-close" onclick="closeModal('comp-assess-modal')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="ca-emp-id">
+      <input type="hidden" id="ca-comp-id">
+      <div class="form-group"><label>Status</label>
+        <select id="ca-status">
+          <option value="Competent">Competent</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Not Yet">Not Yet</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Achieved Level</label>
+        <select id="ca-level">
+          <option value="">— Not rated —</option>
+          <option value="1">1 — Awareness</option>
+          <option value="2">2 — Basic (needs supervision)</option>
+          <option value="3">3 — Competent (independent, meets standard)</option>
+          <option value="4">4 — Advanced (optimises performance)</option>
+          <option value="5">5 — Expert (coaches others)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Assessment Date</label><input type="date" id="ca-date"></div>
+      <div class="form-group"><label>Notes</label><textarea id="ca-notes" rows="3"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('comp-assess-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveCompAssessment()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Competency Builder Report Modal -->
+<div class="modal-overlay hidden" id="comp-report-modal">
+  <div class="modal modal-xl">
+    <div class="modal-header" style="display:flex;align-items:center;gap:12px">
+      <h3 style="flex:1">📊 Competency Framework Report</h3>
+      <button class="btn btn-outline btn-sm" onclick="printCompReport()">🖨️ Print / Export PDF</button>
+      <button class="modal-close" onclick="closeModal('comp-report-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="comp-report-body" style="padding:0"></div>
+  </div>
+</div>
+
+<!-- Knowledge Base Article Modal -->
+<div class="modal-overlay hidden" id="kb-article-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header"><h3 id="kb-modal-title">New Article</h3><button class="modal-close" onclick="closeModal('kb-article-modal')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="kb-article-id">
+      <div class="form-grid">
+        <div class="form-group"><label>Title *</label><input id="kb-title" placeholder="Article title"></div>
+        <div class="form-group"><label>Category</label><select id="kb-cat-sel"></select></div>
+      </div>
+      <div class="form-group"><label>Tags (comma-separated)</label><input id="kb-tags" placeholder="e.g. safety, equipment, induction"></div>
+      <div class="form-group form-full">
+        <div class="kb-body-header">
+          <label>Body</label>
+          <button type="button" class="btn btn-outline btn-sm" onclick="toggleKbAI(this)">🤖 Write with AI</button>
+        </div>
+        <div id="kb-ai-panel" class="kb-ai-panel" style="display:none">
+          <textarea id="kb-ai-prompt" rows="2" placeholder="Describe what to write — e.g. 'Site speed limits for haul roads, ramps and near personnel zones, our limits are 40/20/10 km/h'"></textarea>
+          <div class="flex gap-2 align-center">
+            <button type="button" class="btn btn-accent btn-sm" onclick="runKbAI('replace')">✨ Generate</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="runKbAI('append')">+ Append to body</button>
+            <span id="kb-ai-status" class="cell-sub"></span>
+          </div>
+        </div>
+        <textarea id="kb-body" rows="12" placeholder="Write your article here. Use plain text or simple Markdown."></textarea>
+      </div>
+      <div class="form-group"><label>Status</label>
+        <select id="kb-status"><option value="Published">Published</option><option value="Draft">Draft</option></select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('kb-article-modal')">Cancel</button>
+      <button class="btn btn-accent" onclick="saveKBArticle()">Save Article</button>
+    </div>
+  </div>
+</div>
+
+<!-- KB Category Manager Modal -->
+<div class="modal-overlay hidden" id="kb-catmgr-modal">
+  <div class="modal modal-md">
+    <div class="modal-header">
+      <h3>Manage Categories</h3>
+      <button class="modal-close" onclick="closeModal('kb-catmgr-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="kb-catmgr-list" class="kb-catmgr-list"></div>
+      <div class="kb-catmgr-form">
+        <h4 id="kb-catmgr-form-title">Add Category</h4>
+        <input type="hidden" id="kb-catmgr-id">
+        <div class="form-grid-3">
+          <div class="form-group form-span-2"><label>Name *</label><input id="kb-catmgr-name" placeholder="Category name"></div>
+          <div class="form-group"><label>Icon</label><input id="kb-catmgr-icon" placeholder="📄" maxlength="4"></div>
+        </div>
+        <div class="form-group"><label>Colour</label>
+          <div class="color-row">
+            <input type="color" id="kb-catmgr-color" value="#4f46e5">
+            <span id="kb-catmgr-preview" class="kb-cat-preview"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline btn-sm" onclick="kbCatMgrReset()">Cancel / New</button>
+      <button class="btn btn-accent" onclick="saveKBCategory()">Save Category</button>
+    </div>
+  </div>
+</div>
+
+<!-- Knowledge Base View Modal -->
+<div class="modal-overlay hidden" id="kb-view-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header"><h3 id="kb-view-title">Article</h3><button class="modal-close" onclick="closeModal('kb-view-modal')">✕</button></div>
+    <div class="modal-body" id="kb-view-body"></div>
+    <div class="modal-footer" id="kb-view-footer">
+      <button class="btn btn-outline" onclick="closeModal('kb-view-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Document Preview Modal -->
+<div class="modal-overlay hidden" id="doc-preview-modal">
+  <div class="modal modal-doc-preview">
+    <div class="modal-header">
+      <h3>Document Preview</h3>
+      <div class="flex gap-2 align-center">
+        <button class="btn btn-outline btn-sm" id="ai-check-btn" onclick="aiPrePrintCheck()">🤖 AI Check</button>
+        <button class="btn btn-outline btn-sm" onclick="printDocPreview()">🖨 Print</button>
+        <button class="modal-close" onclick="closeModal('doc-preview-modal')">✕</button>
+      </div>
+    </div>
+    <div class="modal-body doc-preview-body" id="doc-preview-body"></div>
+  </div>
+</div>
+
+<!-- R1 — Version history modal -->
+<div class="modal-overlay hidden" id="cs-versions-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>🕘 Version history</h3>
+      <button class="modal-close" onclick="closeModal('cs-versions-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="cs-versions-body"></div>
+  </div>
+</div>
+
+<!-- Organisations (tenant) management -->
+<div class="modal-overlay hidden" id="tenant-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>🏢 Organisations</h3>
+      <button class="modal-close" onclick="closeModal('tenant-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="tenant-modal-body"></div>
+  </div>
+</div>
+
+<!-- §21 — side-by-side change review (original vs generated) -->
+<div class="modal-overlay hidden" id="cs-compare-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>🔍 Review changes</h3>
+      <button class="modal-close" onclick="closeModal('cs-compare-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="cs-compare-body"></div>
+  </div>
+</div>
+
+<!-- Semantic source→template mapping preview + unmapped-content queue -->
+<div class="modal-overlay hidden" id="cs-map-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>🗺 Source → Template mapping</h3>
+      <button class="modal-close" onclick="closeModal('cs-map-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="cs-map-body"></div>
+  </div>
+</div>
+
+<!-- Master/Derived — create/list derived versions -->
+<div class="modal-overlay hidden" id="cs-derive-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <h3>🧬 Derived versions</h3>
+      <button class="modal-close" onclick="closeModal('cs-derive-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="cs-derive-body"></div>
+  </div>
+</div>
+
+<!-- EDIT DOCUMENT MODAL -->
+<div class="modal-overlay hidden" id="edit-doc-modal">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <h3>✏️ Edit Document</h3>
+      <button class="modal-close" onclick="closeModal('edit-doc-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>File Name</label>
+        <input id="edit-doc-name" type="text" placeholder="Document name (including extension)">
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input id="edit-doc-category" type="text" placeholder="e.g. SOP (AI draft), Policy, Training Material">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="edit-doc-desc" rows="3" placeholder="Optional description or notes"></textarea>
+        <button type="button" class="btn-ai-desc mt-1" onclick="aiDraftDesc('edit-doc-desc','document',()=>({name:val('edit-doc-name'),category:val('edit-doc-category')}))">✨ AI Draft Description</button>
+      </div>
+      <div class="form-group">
+        <label>Replace File <span class="cell-sub" style="font-weight:400">(optional — upload a new version)</span></label>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:4px">
+          <label class="btn btn-outline btn-sm" style="cursor:pointer;margin:0">
+            📂 Choose file
+            <input type="file" id="edit-doc-file" style="display:none"
+              onchange="document.getElementById('edit-doc-file-label').textContent=this.files[0]?this.files[0].name:'No replacement file chosen'">
+          </label>
+          <span id="edit-doc-file-label" class="cell-sub">No replacement file chosen</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('edit-doc-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEditDoc()">💾 Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Image Layout Modal -->
+<div class="modal-overlay hidden" id="img-layout-modal">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-header">
+      <h3>Image Layout</h3>
+      <button class="modal-close" onclick="closeModal('img-layout-modal')">✕</button>
+    </div>
+    <div class="modal-body" style="padding-bottom:0">
+      <div class="img-layout-tabs">
+        <button class="img-lt-tab active" data-tab="wrap" onclick="imgLayoutTab(this)">Text Wrapping</button>
+        <button class="img-lt-tab" data-tab="pos" onclick="imgLayoutTab(this)">Position</button>
+        <button class="img-lt-tab" data-tab="size" onclick="imgLayoutTab(this)">Size</button>
+      </div>
+
+      <!-- Wrapping tab -->
+      <div id="img-tab-wrap" class="img-lt-panel">
+        <div class="form-group mb-1"><label class="form-label">Wrapping style</label></div>
+        <div class="img-wrap-grid">
+          <button class="img-wrap-opt active" data-wrap="inline" onclick="imgSelectWrap(this)" title="In line with text">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><rect x="4" y="4" width="40" height="12" rx="1" fill="#1E3A5F"/><rect x="4" y="20" width="40" height="4" rx="1" fill="#D7DAE3"/><rect x="4" y="27" width="40" height="4" rx="1" fill="#D7DAE3"/><rect x="4" y="34" width="28" height="4" rx="1" fill="#D7DAE3"/></svg>
+            <span>In line with text</span>
+          </button>
+          <button class="img-wrap-opt" data-wrap="square" onclick="imgSelectWrap(this)" title="Square">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><rect x="16" y="4" width="18" height="18" rx="1" fill="#1E3A5F"/><rect x="4" y="4" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="9" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="14" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="19" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="37" y="4" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="37" y="9" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="37" y="14" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="37" y="19" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="26" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="32" width="28" height="3" rx="1" fill="#D7DAE3"/></svg>
+            <span>Square</span>
+          </button>
+          <button class="img-wrap-opt" data-wrap="tight" onclick="imgSelectWrap(this)" title="Tight">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><ellipse cx="24" cy="13" rx="9" ry="9" fill="#1E3A5F"/><rect x="4" y="4" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="9" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="14" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="19" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="36" y="4" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="37" y="9" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="35" y="14" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="36" y="19" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="26" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="32" width="28" height="3" rx="1" fill="#D7DAE3"/></svg>
+            <span>Tight</span>
+          </button>
+          <button class="img-wrap-opt" data-wrap="through" onclick="imgSelectWrap(this)" title="Through">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><ellipse cx="24" cy="13" rx="9" ry="9" fill="#1E3A5F"/><rect x="4" y="4" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="9" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="14" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="19" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="36" y="4" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="37" y="9" width="7" height="3" rx="1" fill="#D7DAE3"/><rect x="35" y="14" width="9" height="3" rx="1" fill="#D7DAE3"/><rect x="36" y="19" width="8" height="3" rx="1" fill="#D7DAE3"/><rect x="14" y="9" width="20" height="3" rx="1" fill="#BFDBFE"/><rect x="14" y="14" width="20" height="3" rx="1" fill="#BFDBFE"/><rect x="4" y="26" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="32" width="28" height="3" rx="1" fill="#D7DAE3"/></svg>
+            <span>Through</span>
+          </button>
+          <button class="img-wrap-opt" data-wrap="topBottom" onclick="imgSelectWrap(this)" title="Top and bottom">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><rect x="12" y="10" width="24" height="14" rx="1" fill="#1E3A5F"/><rect x="4" y="4" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="28" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="34" width="28" height="3" rx="1" fill="#D7DAE3"/></svg>
+            <span>Top and bottom</span>
+          </button>
+          <button class="img-wrap-opt" data-wrap="behind" onclick="imgSelectWrap(this)" title="Behind text">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><rect x="12" y="6" width="24" height="22" rx="1" fill="#93C5FD"/><rect x="4" y="4" width="40" height="3" rx="1" fill="#1E3A5F"/><rect x="4" y="10" width="40" height="3" rx="1" fill="#1E3A5F"/><rect x="4" y="16" width="40" height="3" rx="1" fill="#1E3A5F"/><rect x="4" y="22" width="40" height="3" rx="1" fill="#1E3A5F"/><rect x="4" y="28" width="40" height="3" rx="1" fill="#1E3A5F"/><rect x="4" y="34" width="28" height="3" rx="1" fill="#1E3A5F"/></svg>
+            <span>Behind text</span>
+          </button>
+          <button class="img-wrap-opt" data-wrap="inFront" onclick="imgSelectWrap(this)" title="In front of text">
+            <svg viewBox="0 0 48 40" class="img-wrap-svg"><rect x="4" y="4" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="10" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="16" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="22" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="28" width="40" height="3" rx="1" fill="#D7DAE3"/><rect x="4" y="34" width="28" height="3" rx="1" fill="#D7DAE3"/><rect x="12" y="6" width="24" height="22" rx="1" fill="#1E3A5F"/></svg>
+            <span>In front of text</span>
+          </button>
+        </div>
+        <div id="img-wrap-align-row" class="form-group mt-2" style="display:none">
+          <label class="form-label">Align image</label>
+          <div class="flex gap-2">
+            <label class="radio-lbl"><input type="radio" name="img-h-align" value="left" checked> Left</label>
+            <label class="radio-lbl"><input type="radio" name="img-h-align" value="center"> Centre</label>
+            <label class="radio-lbl"><input type="radio" name="img-h-align" value="right"> Right</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Position tab -->
+      <div id="img-tab-pos" class="img-lt-panel" style="display:none">
+        <fieldset class="img-pos-fieldset">
+          <legend>Horizontal</legend>
+          <div class="img-pos-row">
+            <label class="radio-lbl"><input type="radio" name="img-htype" value="align" checked onchange="imgPosTypeChange('h')"> Alignment</label>
+            <select id="img-pos-h-align" style="width:100px">
+              <option value="left">Left</option><option value="center">Center</option><option value="right">Right</option>
+            </select>
+            <span class="cell-sub">relative to Column</span>
+          </div>
+          <div class="img-pos-row" id="img-h-abs-row" style="display:none">
+            <label class="radio-lbl"><input type="radio" name="img-htype" value="absolute" onchange="imgPosTypeChange('h')"> Absolute position</label>
+            <input type="number" id="img-pos-h-abs" value="0" step="0.1" min="0" max="8" class="input-sm" style="width:70px"> <span class="cell-sub">in to the right of Column</span>
+          </div>
+        </fieldset>
+        <fieldset class="img-pos-fieldset">
+          <legend>Vertical</legend>
+          <div class="img-pos-row">
+            <label class="radio-lbl"><input type="radio" name="img-vtype" value="align" checked onchange="imgPosTypeChange('v')"> Alignment</label>
+            <select id="img-pos-v-align" style="width:100px">
+              <option value="top">Top</option><option value="center">Center</option><option value="bottom">Bottom</option>
+            </select>
+            <span class="cell-sub">relative to Page</span>
+          </div>
+          <div class="img-pos-row" id="img-v-abs-row" style="display:none">
+            <label class="radio-lbl"><input type="radio" name="img-vtype" value="absolute" onchange="imgPosTypeChange('v')"> Absolute position</label>
+            <input type="number" id="img-pos-v-abs" value="0.24" step="0.1" min="0" max="11" class="input-sm" style="width:70px"> <span class="cell-sub">in below Paragraph</span>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Size tab -->
+      <div id="img-tab-size" class="img-lt-panel" style="display:none">
+        <fieldset class="img-pos-fieldset">
+          <legend>Height</legend>
+          <div class="img-pos-row">
+            <label class="radio-lbl"><input type="radio" checked> Absolute</label>
+            <input type="number" id="img-size-h" value="3" step="0.01" min="0.1" max="15" class="input-sm" style="width:80px" oninput="imgSizeChange('h')"> <span class="cell-sub">in</span>
+          </div>
+        </fieldset>
+        <fieldset class="img-pos-fieldset">
+          <legend>Width</legend>
+          <div class="img-pos-row">
+            <label class="radio-lbl"><input type="radio" checked> Absolute</label>
+            <input type="number" id="img-size-w" value="4" step="0.01" min="0.1" max="15" class="input-sm" style="width:80px" oninput="imgSizeChange('w')"> <span class="cell-sub">in</span>
+          </div>
+        </fieldset>
+        <div class="form-group mt-1">
+          <label class="checkbox-lbl"><input type="checkbox" id="img-size-lock" checked> Lock aspect ratio</label>
+        </div>
+        <div class="form-group mt-1" style="font-size:12px;color:var(--text-soft)">
+          Original size — Height: <span id="img-orig-h">—</span> &nbsp; Width: <span id="img-orig-w">—</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('img-layout-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="csApplyImageLayout()">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- Image Callouts Modal — number points on an image and explain each one -->
+<div class="modal-overlay hidden" id="img-callout-modal">
+  <div class="modal" style="max-width:1000px">
+    <div class="modal-header">
+      <h3>Image Callouts</h3>
+      <button class="modal-close" onclick="closeModal('img-callout-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="cal-toolbar">
+        <p class="cal-hint">Click the image to add a callout, then type what it explains. Drag to reposition.</p>
+        <div class="cal-style">
+          <span class="cal-style-lbl">New callout:</span>
+          <button type="button" id="cal-kind-number" class="cal-kind-btn active" onclick="_calSetKind('number')" title="A numbered dot; the text goes in a list under the image">① Numbered</button>
+          <button type="button" id="cal-kind-leader" class="cal-kind-btn" onclick="_calSetKind('leader')" title="A dot on the part, a leader line, and a text box on the image">🏷 Text callout</button>
+        </div>
+      </div>
+      <div class="cal-trans-bar">
+        <span class="cs-trans-label">🌐 Translate callouts</span>
+        <select id="cal-trans-lang"><option value="">— select language —</option></select>
+        <button type="button" class="btn btn-outline btn-sm" onclick="csCalTranslate()">Translate</button>
+        <label class="cal-bi-opt"><input type="checkbox" id="cal-bilingual" onchange="_calRender()"> Show translated · English side by side (translated first)</label>
+        <span id="cal-trans-status" class="cell-sub"></span>
+      </div>
+      <div class="cal-wrap">
+        <div class="cal-stage" id="cal-stage">
+          <img id="cal-img" src="" alt="">
+          <svg id="cal-lines" class="cal-lines"></svg>
+          <div id="cal-markers" class="cal-markers"></div>
+        </div>
+        <div class="cal-side">
+          <div class="cal-list-head"><span>Callouts</span><span id="cal-count" class="cal-count">0</span></div>
+          <div id="cal-list" class="cal-list"></div>
+          <div id="cal-empty" class="cal-empty">No callouts yet — click a point on the image to add one.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('img-callout-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="csApplyImageCallouts()">Save callouts</button>
+    </div>
+  </div>
+</div>
+
+<!-- Flow Chart Builder — decision flow charts placed at the cursor on any page -->
+<!-- AI Assist — fill blank table cells / add content, optionally matching an image to a reference file -->
+<div class="modal-overlay hidden" id="ai-assist-modal">
+  <div class="modal" style="max-width:660px">
+    <div class="modal-header">
+      <h3>✨ AI Assist</h3>
+      <button class="modal-close" onclick="closeModal('ai-assist-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="cell-sub" id="aa-context" style="margin:0 0 8px"></p>
+      <div class="form-group form-full" id="aa-mode-wrap">
+        <label class="form-label">What should AI assist do?</label>
+        <label class="aa-mode-opt"><input type="radio" name="aa-mode" value="fill" checked>
+          <span><strong>Fill blank cells only</strong> — keep everything you've already written</span></label>
+        <label class="aa-mode-opt"><input type="radio" name="aa-mode" value="update">
+          <span><strong>Update with new information</strong> — may change existing cells and add rows if more items are found</span></label>
+      </div>
+      <div class="form-group form-full" id="aa-rows-wrap" style="display:none">
+        <label class="form-label">Which items / rows to update? <span class="text-soft" style="font-weight:400">(leave all unticked = every row)</span></label>
+        <div id="aa-rows" class="aa-rows"></div>
+      </div>
+      <div class="form-group form-full">
+        <label class="form-label">Instructions for the AI <span class="text-soft" style="font-weight:400">(optional)</span></label>
+        <textarea id="aa-prompt" rows="3" placeholder="e.g. &quot;Change the layout of this section to a table view&quot; · &quot;Present these controls as a table with Control, Location, Function columns&quot; · &quot;The image is the CAT 745 dashboard with numbered indicators; the uploaded file lists what each number is — match them and fill the table's Name and Function columns, adding rows for extra items.&quot;"></textarea>
+      </div>
+      <div class="aa-uploads">
+        <div class="aa-up">
+          <label class="form-label">🖼 Image to analyse <span class="text-soft" style="font-weight:400">(optional)</span></label>
+          <div class="cs-src-dropzone aa-dz" id="aa-img-dz"
+               ondragover="event.preventDefault();this.classList.add('cs-drag-over')"
+               ondragleave="this.classList.remove('cs-drag-over')"
+               ondrop="aaDrop(event,'img');this.classList.remove('cs-drag-over')">
+            <input type="file" id="aa-img-file" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="aaFileChosen(this,'img')">
+            <div class="cs-src-drop-inner" onclick="document.getElementById('aa-img-file').click()">
+              <div class="cs-src-drop-icon">🖼</div>
+              <div>Drop an image or <u>click to browse</u></div>
+              <div class="cs-src-drop-hint">e.g. a dashboard / diagram screenshot</div>
+            </div>
+          </div>
+          <div id="aa-img-info" class="cs-src-file-info" style="display:none"></div>
+        </div>
+        <div class="aa-up">
+          <label class="form-label">📎 Reference file <span class="text-soft" style="font-weight:400">(optional)</span></label>
+          <div class="cs-src-dropzone aa-dz" id="aa-ref-dz"
+               ondragover="event.preventDefault();this.classList.add('cs-drag-over')"
+               ondragleave="this.classList.remove('cs-drag-over')"
+               ondrop="aaDrop(event,'ref');this.classList.remove('cs-drag-over')">
+            <input type="file" id="aa-ref-file" accept=".docx,.pdf,.pptx,.png,.jpg,.jpeg,.webp" style="display:none" onchange="aaFileChosen(this,'ref')">
+            <div class="cs-src-drop-inner" onclick="document.getElementById('aa-ref-file').click()">
+              <div class="cs-src-drop-icon">📎</div>
+              <div>Drop a file or <u>click to browse</u></div>
+              <div class="cs-src-drop-hint">the list/legend naming the items — DOCX · PDF · image</div>
+            </div>
+          </div>
+          <div id="aa-ref-info" class="cs-src-file-info" style="display:none"></div>
+        </div>
+      </div>
+      <div id="aa-status" class="cell-sub" style="margin-top:6px"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('ai-assist-modal')">Cancel</button>
+      <button class="btn btn-primary" id="aa-run" onclick="csAssistRun()">✨ Run AI assist</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="flow-chart-modal">
+  <div class="modal" style="max-width:1180px">
+    <div class="modal-header">
+      <h3>Flow Chart</h3>
+      <button class="modal-close" onclick="closeModal('flow-chart-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="dfc-mode-bar">
+        <button type="button" id="dfc-mode-flow" class="dfc-mode-btn active" onclick="_dfcSetMode('flow')">🔀 Decision flow</button>
+        <button type="button" id="dfc-mode-label" class="dfc-mode-btn" onclick="_dfcSetMode('label')">🏷 Labelled diagram</button>
+        <input id="dfc-title" class="form-input dfc-title-in" placeholder="Title (optional)" oninput="_dfcPreview()">
+      </div>
+
+      <!-- Decision-flow mode -->
+      <div id="dfc-flow-mode">
+        <div class="dfc-titlebar">
+          <button type="button" class="btn btn-outline btn-sm" onclick="_dfcAdd(null,'process')">+ Step</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="_dfcAdd(null,'decision')">+ Decision</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="_dfcAdd(null,'end')">+ Terminator</button>
+        </div>
+        <div class="dfc-wrap">
+          <div id="dfc-preview" class="dfc-preview"></div>
+          <div id="dfc-nodes" class="dfc-nodes"></div>
+        </div>
+      </div>
+
+      <!-- Labelled-diagram mode: upload a picture, add point → leader line → text callouts -->
+      <div id="dfc-label-mode" style="display:none">
+        <div class="dfc-titlebar">
+          <input type="file" id="dfc-bg-input" accept="image/png,image/jpeg,image/gif,image/webp" style="display:none" onchange="_dfcLabelUpload(this)">
+          <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('dfc-bg-input').click()">🖼 Upload diagram</button>
+          <span class="dfc-label-hint">Click the diagram to add a callout, then drag the ● dot onto the part and the text box into a clear margin.</span>
+        </div>
+        <div class="dfc-wrap">
+          <div class="dfc-label-stage" id="dfc-label-stage">
+            <div class="dfc-label-empty" id="dfc-label-empty">Upload a diagram to start labelling.</div>
+            <div class="dfc-label-frame" id="dfc-label-frame" style="display:none">
+              <img id="dfc-label-img" alt="">
+              <svg id="dfc-label-lines" class="dfc-label-lines"></svg>
+              <div id="dfc-label-markers" class="dfc-label-markers"></div>
+            </div>
+          </div>
+          <div id="dfc-label-list" class="dfc-nodes"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('flow-chart-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="csApplyFlowChart()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="/vendor/chart.umd.js?v=4.4.1"></script>
+<!-- Save a form document to a destination folder (Form Builder — save-to-destination) -->
+<div class="modal-overlay hidden" id="save-form-dest-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>💾 Save Form to…</h3>
+      <button class="modal-close" onclick="closeModal('save-form-dest-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="cell-sub" id="sfd-name"></p>
+      <div class="form-group">
+        <label for="sfd-folder">Destination</label>
+        <select id="sfd-folder" onchange="sfdToggleCat()">
+          <option value="library">Document Library</option>
+          <option value="training-standards">Training Standards</option>
+          <option value="training-material">Training Material</option>
+          <option value="template-forms">Template Forms (reusable)</option>
+        </select>
+      </div>
+      <div class="form-group" id="sfd-cat-wrap" style="display:none">
+        <label for="sfd-cat">Training Material category</label>
+        <input id="sfd-cat" placeholder="e.g. Inductions">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('save-form-dest-modal')">Cancel</button>
+      <button class="btn btn-success" onclick="confirmSaveFormDest()">💾 Save</button>
+    </div>
+  </div>
+</div>
+<script src="/js/app.js?v=337"></script>
+</body>
+</html>

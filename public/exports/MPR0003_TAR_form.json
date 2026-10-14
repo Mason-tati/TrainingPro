@@ -1,0 +1,741 @@
+{
+  "form_name": "Competency Assessment Record",
+  "source_document": "MPR0003_Haul Truck_TAR.docx",
+  "field_types_used": [
+    "text",
+    "textarea",
+    "checkbox",
+    "date",
+    "signature",
+    "table",
+    "static_text"
+  ],
+  "sections": [
+    {
+      "title": "Competency Assessment Record",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "This Competency Assessment Record documents a candidate’s assessment outcome against the competency unit(s) listed below. The assessor must complete this form only when a final decision of the candidate’s competence has been made. This can only occur once the candidate has completed their formal training and is working on site."
+        },
+        {
+          "type": "text",
+          "label": "Candidate Full Name"
+        },
+        {
+          "type": "text",
+          "label": "Induction/Employee No"
+        },
+        {
+          "type": "text",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "label": "Contact Number"
+        },
+        {
+          "type": "text",
+          "label": "Work Site"
+        },
+        {
+          "type": "static_text",
+          "text": "Unit(s) Covered: MPR0003 Conduct Haul Truck Operations"
+        },
+        {
+          "type": "checkbox",
+          "label": "Assessment Type",
+          "options": [
+            "Assessment",
+            "Recognition RPL / RCC",
+            "Familiarisation",
+            "Move and Test"
+          ]
+        },
+        {
+          "type": "date",
+          "label": "Assessment Dates"
+        },
+        {
+          "type": "checkbox",
+          "label": "Checksum",
+          "options": [
+            "Operator responsibility",
+            "Equipment module",
+            "Production Techniques",
+            "500 hours Provisional, Under Minimal Supervision"
+          ]
+        },
+        {
+          "type": "checkbox",
+          "label": "Evidence(where appropriate)The original documents must be sighted and certified copies attached.",
+          "options": [
+            "Statement of Attainment (for any of the units listed above)",
+            "WPHS / OHS Tickets (relevant to units listed above)",
+            "Site Authorisation or Skills Report from employer, SSE, or approved delegate",
+            "Log Book / Record"
+          ]
+        },
+        {
+          "type": "checkbox",
+          "label": "Final Assessment Outcome",
+          "options": [
+            "Competent",
+            "Not Yet Competent"
+          ]
+        },
+        {
+          "type": "static_text",
+          "text": "Reasonable Adjustment(where applicable): May attempt any part of the practical assessment “subsection elements” a second time. Third time requires manager approval."
+        },
+        {
+          "type": "textarea",
+          "label": "Overall Comments and Feedback to the Candidate"
+        },
+        {
+          "type": "textarea",
+          "label": "Candidate Comments"
+        },
+        {
+          "type": "signature",
+          "label": "Assessor(s) Signature"
+        },
+        {
+          "type": "date",
+          "label": "Assessor(s) Date"
+        },
+        {
+          "type": "signature",
+          "label": "Candidate Signature"
+        },
+        {
+          "type": "date",
+          "label": "Candidate Date"
+        },
+        {
+          "type": "signature",
+          "label": "Training Superintendent Signature"
+        },
+        {
+          "type": "date",
+          "label": "Training Superintendent Date"
+        },
+        {
+          "type": "static_text",
+          "text": "By signing the below candidate area manager section, I hereby agree with the assessor assessment of the candidate to be competent at the time of assessment to operate haul truck, and take full responsibility for the candidate driving abilities and behaviors for operating haul truck."
+        },
+        {
+          "type": "text",
+          "label": "Managers Name"
+        },
+        {
+          "type": "text",
+          "label": "ID.No"
+        },
+        {
+          "type": "signature",
+          "label": "Candidates Area Manager Signature"
+        },
+        {
+          "type": "date",
+          "label": "Candidates Area Manager Date"
+        }
+      ]
+    },
+    {
+      "title": "TRAINING OFFICE USE ONLY",
+      "fields": [
+        {
+          "type": "table",
+          "label": "Training Administrator Check Completion of Training and Assessment Document / Document Che",
+          "columns": [
+            {
+              "name": "Training Administrator Check Completion of Training and Assessment Document",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Document Checked",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Date ____/_____/______",
+              "fillable": true,
+              "checkbox": false
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "c0": "Information Entered Into LMS",
+                "c1": "Entered"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Paper Copy Filed Into the Persons Training Record File",
+                "c1": "Filed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Supporting Evidence Register",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "The Supporting Evidence Register is a list of all evidence contributing to the overall assessment outcome and any training information supplied to the candidate. This may include:"
+        },
+        {
+          "type": "static_text",
+          "text": "Certificates / Statement of Attainments (SoA)"
+        },
+        {
+          "type": "static_text",
+          "text": "Safe Work Procedures (SWP) and similar documents"
+        }
+      ]
+    },
+    {
+      "title": "Supervisor reports",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Other relevant documents."
+        }
+      ]
+    },
+    {
+      "title": "Supporting Evidence Register",
+      "fields": [
+        {
+          "type": "table",
+          "label": "Type / Description",
+          "columns": [
+            {
+              "name": "Type",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Description",
+              "fillable": true,
+              "checkbox": false
+            }
+          ],
+          "rows": [
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Trainer and Assessor Information",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "The Training and Assessment Record has been developed to provide a record of training and assessment against a unit of competency. The Competency Assessment Record (page 3) records all outcomes and decisions made against the relevant units and must be completed at the end of the assessment."
+        }
+      ]
+    },
+    {
+      "title": "Recording Training",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Training outcomes are recorded in the first four columns of each table and are grouped into the area of learning. Both the candidate and the trainer must initial and date the relevant columns to confirm that training has been satisfactorily completed. Each column is explained below."
+        },
+        {
+          "type": "static_text",
+          "text": "Column 1 (Learning Criteria) contains the learning criteria to be covered."
+        },
+        {
+          "type": "static_text",
+          "text": "Column 2 (Learning Content) lists sections in the reference material that address the area of learning."
+        },
+        {
+          "type": "static_text",
+          "text": "Column 3 (Candidate Initials & Date) requires the candidate to sign and date as confirmation of their participation in the training and understanding of the content."
+        },
+        {
+          "type": "static_text",
+          "text": "Column 4 (Trainer Initials & Date) requires the trainer to sign and date as confirmation that the candidate has covered the learning content."
+        }
+      ]
+    },
+    {
+      "title": "Recording Assessment",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Column 5 (Task) outlines the task to be completed by the candidate. All tasks are identified by a letter of the alphabet. These assessment tasks are mapped to the performance criteria of the national unit of competency. Oral questions are included to support tasks. Assessors are to record the candidate’s responses in the Comments box on the relevant page."
+        },
+        {
+          "type": "static_text",
+          "text": "Column 6 (Observations) identifies the assessor’s observations. The candidate may perform other activities that demonstrate competence. Where applicable these should be recorded in the Comments box at the bottom of each page. Where a specific activity is not required or not observed include explanatory notes in the Comments box to ensure that the assessment meets the requirements of the unit of competency."
+        },
+        {
+          "type": "static_text",
+          "text": "Column 7 (Assessor Initials & Date) records the outcome of the observation task. The assessor is to initial and date the column when the candidate has satisfactorily demonstrated capacity to complete the task to the specified requirements. Assessors should also consider the candidate’s capacity to apply the full range of knowledge and skills associated with the task."
+        }
+      ]
+    },
+    {
+      "title": "Trainer and Assessor Observations and Comments",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Comments should be recorded where the assessor has asked questions and gathered responses, or the assessment tool has been contextualised to meet candidate or workplace requirements. Fields have been provided at the bottom of each page to allow for this information to be recorded."
+        }
+      ]
+    },
+    {
+      "title": "Assessing at Level 3",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Qualifications certify the knowledge and skills that a person has achieved through study, training, work and life experience. When undertaking an assessment for any unit of competence, consider the guidelines for each level. The unit you are about to assess is a Level 3. Specific requirements for this level are detailed below."
+        }
+      ]
+    },
+    {
+      "title": "Certificate III Qualification Level Requirements",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Summary: Graduates at this level will have theoretical and practical knowledge and skills for work and/or further learning."
+        },
+        {
+          "type": "static_text",
+          "text": "Knowledge: Graduates at this level will have basic factual, technical, procedural and some theoretical knowledge of a specific area of work and learning."
+        },
+        {
+          "type": "static_text",
+          "text": "Skills: Graduates at this level will have basic, cognitive, technical and communication skills to select and apply a specialised range of methods, tools materials andinformation to: complete routine activities provide and transmit solutions to a predictable and sometimes unpredictable problems."
+        },
+        {
+          "type": "static_text",
+          "text": "Application of knowledge and skills: Graduates at this level will apply knowledge and skills to demonstrate autonomy and judgement and to take limited responsibility in known and stable contexts and within established parameters."
+        }
+      ]
+    },
+    {
+      "title": "Feedback",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "Any feedback or comments you can provide on this training and/or assessment record is appreciated. Please detail your feedback in the space provided and send to the address below."
+        },
+        {
+          "type": "static_text",
+          "text": "Thank you."
+        }
+      ]
+    },
+    {
+      "title": "Ambatovy Training Department",
+      "fields": [
+        {
+          "type": "static_text",
+          "text": "© Pertrain Pty Ltd Page 6 of 12"
+        },
+        {
+          "type": "static_text",
+          "text": "J/N J9738 August, 2011"
+        },
+        {
+          "type": "static_text",
+          "text": "© Pertrain Pty Ltd Page 6 of 12"
+        },
+        {
+          "type": "static_text",
+          "text": "J/N J9738 August, 2011"
+        }
+      ]
+    },
+    {
+      "title": "Training and Assessment Record",
+      "fields": [
+        {
+          "type": "table",
+          "label": "Learning Criteria / Learning Content / Candidate Initials & Date / Trainer Initials & Date",
+          "columns": [
+            {
+              "name": "Learning Criteria",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Learning Content",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Candidate Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Trainer Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Task",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Observations",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Assessor Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            }
+          ],
+          "rows": [
+            {
+              "section_heading": "Plan and Prepare for Operations"
+            },
+            {
+              "cells": {
+                "c0": "Access, interpret and apply information relevant to the operation and required for satisfactory work completion including: ‾ compliance documentation ‾ work requirements and procedures ‾ geological and survey data",
+                "c1": "Operator Responsibilities Operator obligations Legislation and site policies Compliance documentation Role of the operator Shift briefings and handovers Applicable data Geological, technical and survey data Interpret information and plan work Workplace safety requirements Standard Operating Procedures (SOP) Environmental and heritage complianceEquipment Module Specifications",
+                "c4": "A. Use the work plan/allocation to identify, interpret and apply the work requirements and prepare for grading operations.Oral:How does the site SOP apply to Occupational Health and Safety regulations/requirements?What are the consequences of a hazardous materials spill?",
+                "c5": "Interprets and applies compliance documentationAccesses and verifies work requirements and site/mine procedures and systems Interprets geological, technical and survey data Interprets plans, reports, drawings, maps and specifications Applies site, operational and equipment safety requirements Applies haul truck procedures Applies mine open cut procedures Selects correct PPE Identifies and addresses environmental, cultural and heritage issues in accordance with SOP Organises work tasks Inspects and prepares work area Undertakes hazard inspection Applies control measures for hazards and potential risks Confirms equipment characteristics, technical capabilities and limitations to ensure suitability to the task"
+              }
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "label": "Learning Criteria / Learning Content / Candidate Initials & Date / Trainer Initials & Date",
+          "columns": [
+            {
+              "name": "Learning Criteria",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Learning Content",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Candidate Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Trainer Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Task",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Observations",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Assessor Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "c0": "Inspect and prepare the work area to identify, manage and report potential hazards and risks",
+                "c1": "Operator Responsibilities Inadvertent start-up Potential sources of energy Machine guarding High risk activities Identifying hazards Noise, dust and fumes Hazardous substances SpillageProduction TechniquesSite inspectionsMounting and dismountingSafe operating practices",
+                "c5": "Coordinates work activity with others prior to and during operations Applies approved communications procedures and uses appropriate communications equipment Provides site/shift information promptly for entry onto site."
+              }
+            },
+            {
+              "cells": {
+                "c0": "Resolve coordination requirements with others at the site prior to commencing and during work activities",
+                "c1": "Operator Responsibilities Communication procedures Two-way radio Horn signals"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Select appropriate personal protective equipment",
+                "c1": "Operator Responsibilities Personal Protective Equipment (PPE)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "label": "Learning Criteria / Learning Content / Candidate Initials & Date / Trainer Initials & Date",
+          "columns": [
+            {
+              "name": "Learning Criteria",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Learning Content",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Candidate Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Trainer Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            },
+            {
+              "name": "Task",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Observations",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Assessor Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "c0": "Assess equipment and/orattachments for work suitability and efficiency",
+                "c1": "Equipment ModuleDimensions and specificationsProduction TechniquesEfficiency and safetyProduction efficiencyPerformance factorsEfficient work area support"
+              }
+            },
+            {
+              "section_heading": "Operate Haul Truck by Loading, Hauling and Dumping Materials"
+            },
+            {
+              "cells": {
+                "c0": "Pre-start, start-up, park-up and shutdown procedures",
+                "c1": "Equipment Module Pre-start checks and inspections Start-up procedure Post start-up checks Moving off Travel speed changing Equipment controls Stopping and parking Shutdown",
+                "c4": "B. Perform load, haul and dump operations during a shift. When complete, park and shut down the haul truck.Oral:What extra procedures and precautions would you follow when operating the haul truck at night?",
+                "c5": "Wears appropriate PPE Performs pre-start checks and walkaround inspection Identifies and reports defects Selects, fits and removes appropriate attachments Starts the truck Performs post start-up checks Performs brake tests Diagnoses faults Drives the truck safely in accordance with SOP Responds to systems or alarms Operates the truck efficiently within machine limitations and capacity Positions truck under loading equipment Hauls material Dumps material Modifies operating techniques to meet changing work conditions Completes work according to the work plan/allocation Parks haul truck in accordance with SOP Shuts down the haul truck in accordance with SOP Secures equipment Ensures that attachments are safe Clears access ways"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Select and modify the operating techniques to meet changing work conditions and to complete work within the equipment capacity.",
+                "c1": "Operator Responsibilities General traffic rulesProduction Techniques Safe driving practices Mounting and dismounting Visibility hazards Driving the haul truck Retarder operation Grades Slowing Transmission selection Turning, reversing Efficient operations Queuing"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Learning Criteria",
+                "c1": "Learning Content",
+                "c4": "Task",
+                "c5": "Observations"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Recognise and respond to hazardous and emergency situations.",
+                "c1": "Equipment Module Emergency stopProduction Techniques Hazard avoidance Electrical conductors Adverse conditions Fatigue management Emergency procedures Stockpile and on-board fires Tyre failure/fire Haul truck recovery"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Position truck under all types of loading equipment.",
+                "c1": "Production Techniques Loading techniques Loader spotting techniques Near side loading Off side loading Single side loading Double side loading Modified drive by Loading with excavators Top loading Bottom loading Drive by loading Loading with a wheel loader"
+              }
+            },
+            {
+              "cells": {}
+            },
+            {
+              "cells": {
+                "c0": "Carry out haulage and dumping operations.",
+                "c1": "Production Techniques Hauling Dumping Dumping over a prepared Edge Free dumping Tipping downhill and uphill Tipping across grades, in corners",
+                "c4": "C. Demonstrate the correct procedures to follow in the event of a hazard or emergency.Oral:What should you do if fire breaks out on your machine?",
+                "c5": "Performs emergency procedures Modifies operating technique for changing conditions such as dust, noise or adverse weather conditions Applies fatigue management procedure Applies isolation procedures Follows SOP when working near power lines and face overhangs"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Complete work in accordance with the plan and within the capacity of the allocated equipment.",
+                "c1": "Operator Responsibilities Shift handoversProduction TechniquesPlan and prepare for operations"
+              }
+            },
+            {
+              "section_heading": "Carry out Post Operational Procedures"
+            },
+            {
+              "cells": {
+                "c0": "Inspect, find and report faults.",
+                "c1": "Operator Responsibilities Equipment isolation and tagging Checks and inspections Defect reportingEquipment Module Walkaround inspection Inspection reporting Fluid level checks",
+                "c4": "D. Perform the required post- operational procedures.",
+                "c5": "Performs required housekeeping Conducts a walkaround safety inspection of the equipment and attachments Identifies and reports defects and maintenance items Assists maintenance personnel as required Uses hand tools correctly for authorised operator servicing and maintenance Applies site chemical and fuel safety measures Handles and disposes of hazardous and environmentally sensitive materials according to site procedures Refuels the machine in accordance with SOP Completes required records and reports in accordance with SOP"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Carry out routine operator servicing, maintenance and housekeeping tasks.",
+                "c1": "Operator Responsibilities Housekeeping Maintenance safety Working with oils Pressure operated systems Fluid levels Using the correct fluids Greases RefuellingEquipment Module Preventative maintenance Scheduled servicing"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Maintain and process records and reports.",
+                "c1": "Operator ResponsibilitiesShift handovers"
+              }
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "label": "Overall Performance / Assessor Initials & Date",
+          "columns": [
+            {
+              "name": "Overall Performance",
+              "fillable": false,
+              "checkbox": false
+            },
+            {
+              "name": "Assessor Initials & Date",
+              "fillable": true,
+              "checkbox": false
+            }
+          ],
+          "rows": [
+            {
+              "cells": {
+                "c0": "Has the candidate been able to perform the set tasks to the required workplace standard?"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Has the candidate managed a range of different tasks/operations/activities within the role and work environment?"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Is the candidate able to manage changes in workplace conditions or routine?"
+              }
+            },
+            {
+              "cells": {
+                "c0": "Is the candidate able to work well with others, and perform within the required level of responsibility and workplace expectations?"
+              }
+            }
+          ]
+        },
+        {
+          "type": "signature",
+          "label": "Assessor(s) Signature"
+        },
+        {
+          "type": "date",
+          "label": "Assessor(s) Date"
+        },
+        {
+          "type": "static_text",
+          "text": "Date _____/_____/________"
+        },
+        {
+          "type": "static_text",
+          "text": "Competent"
+        },
+        {
+          "type": "static_text",
+          "text": "Not Yet Competent"
+        },
+        {
+          "type": "signature",
+          "label": "Candi"
+        },
+        {
+          "type": "date",
+          "label": "Candidate Date"
+        },
+        {
+          "type": "static_text",
+          "text": "Date _____/_____/________"
+        },
+        {
+          "type": "static_text",
+          "text": "□"
+        },
+        {
+          "type": "static_text",
+          "text": "□"
+        },
+        {
+          "type": "signature",
+          "label": "Training Superintendent Signature"
+        },
+        {
+          "type": "date",
+          "label": "Training Superintendent Date"
+        },
+        {
+          "type": "static_text",
+          "text": "Date _____/_____/________"
+        }
+      ]
+    }
+  ]
+}

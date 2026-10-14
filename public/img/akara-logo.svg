@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="AKARA Resources">
+  <g fill="none" stroke="#2E5FAA" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <!-- X strokes: corner-to-corner, forming the AKARA mark -->
+    <path d="M20 20 L100 100"/>
+    <path d="M100 20 L20 100"/>
+  </g>
+  <!-- gold triangle, points left, top-right notch -->
+  <path d="M64 38 L98 18 L98 58 Z" fill="#F5B82E"/>
+  <!-- white slash cut-outs -->
+  <path d="M34 24 L54 44" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M66 62 L86 42" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <!-- small white play triangle on left arm -->
+  <path d="M30 50 L43 60 L30 70 Z" fill="#ffffff"/>
+</svg>
